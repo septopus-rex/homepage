@@ -2,7 +2,9 @@
 
 ## **Preface: The Awakening of Ideals**
 
-The development of technology, particularly artificial intelligence and blockchain, now enables the creation of a fair and transparent system to address the corruption and injustice inherent in outdated power structures. Septopus, an autonomous world jointly driven by humans, AI, and blockchain, aims to build a new model of governance based on fairness and justice. Here, there is no decayed authority, no entrenched hierarchy, and no theatrical governance—every participant can build their own career and social network within this on-chain virtual world.
+The development of technology, particularly artificial intelligence and blockchain, now enables the creation of a fair and transparent system to address the corruption and injustice inherent in outdated power structures.
+
+Septopus, an autonomous world jointly driven by humans, AI, and blockchain, aims to build a new model of governance based on fairness and justice. Here, there is no decayed authority, no entrenched hierarchy, and no theatrical governance—every participant can build their own career and social network within this on-chain virtual world.
 
 ## **Governance Structure**
 

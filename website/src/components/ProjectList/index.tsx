@@ -3,43 +3,58 @@ import clsx from 'clsx';
 import Heading from '@theme/Heading';
 import styles from './styles.module.css';
 
-type FeatureItem = {
+type ProjectItem = {
   title: string;
   Svg: React.ComponentType<React.ComponentProps<'svg'>>;
   description: ReactNode;
+  github: string;
 };
 
-const FeatureList: FeatureItem[] = [
+const FeatureList: ProjectItem[] = [
   {
-    title: 'Start From Zero',
+    title: 'Rules Center',
     Svg: require('@site/static/img/undraw_docusaurus_mountain.svg').default,
     description: (
       <>
-        Start from zero, there is no message missed.
+        Discuss board for rules.
       </>
     ),
+    github:"https://github.com/septopus-rex/rule",
   },
   {
-    title: 'Completely Public',
-    Svg: require('@site/static/img/undraw_docusaurus_tree.svg').default,
-    description: (
-      <>
-        Public in every details. New solution for modern sociaty
-      </>
-    ),
-  },
-  {
-    title: 'Sustainable Future',
+    title: 'Septopus World',
     Svg: require('@site/static/img/undraw_docusaurus_react.svg').default,
     description: (
       <>
-        Rules bases on now and go to future substantially.
+        Solution of Septopus World on Solana Network
       </>
     ),
+    github:"https://github.com/septopus-rex/world",
+  },
+  {
+    title: 'King Center',
+    Svg: require('@site/static/img/undraw_docusaurus_react.svg').default,
+    description: (
+      <>
+        King management center.
+      </>
+    ),
+    github:"https://github.com/septopus-rex/king",
+  },
+  ,
+  {
+    title: 'AI Center',
+    Svg: require('@site/static/img/undraw_docusaurus_react.svg').default,
+    description: (
+      <>
+        AI management center.
+      </>
+    ),
+    github:"https://github.com/septopus-rex/ai",
   },
 ];
 
-function Feature({title, Svg, description}: FeatureItem) {
+function Feature({title, Svg, description,github}: ProjectItem) {
   return (
     <div className={clsx('col col--4')}>
       <div className="text--center">
@@ -48,12 +63,13 @@ function Feature({title, Svg, description}: FeatureItem) {
       <div className="text--center padding-horiz--md">
         <Heading as="h3">{title}</Heading>
         <p>{description}</p>
+        <p><a href={github} target='_blank'>{github}</a></p>
       </div>
     </div>
   );
 }
 
-export default function HomepageFeatures(): ReactNode {
+export default function ProjectList(): ReactNode {
   return (
     <section className={styles.features}>
       <div className="container">

@@ -4,6 +4,7 @@ import Link from '@docusaurus/Link';
 import useDocusaurusContext from '@docusaurus/useDocusaurusContext';
 import Layout from '@theme/Layout';
 import HomepageFeatures from '@site/src/components/HomepageFeatures';
+import SeptopusStatus from '../components/SeptopusStatus';
 import Heading from '@theme/Heading';
 
 import styles from './index.module.css';
@@ -14,16 +15,13 @@ function HomepageHeader() {
     <header className={clsx('hero hero--primary', styles.heroBanner)}>
       <div className="container">
         <Heading as="h1" className={clsx('hero__title', styles.heroTitle)}>
-          {siteConfig.title}
+          <p>
+            Keep<br />
+            Freedom<br />
+            Great<br />
+            Always
+          </p>
         </Heading>
-        <p className={clsx("hero__subtitle", styles.subTitle)}>{siteConfig.tagline}</p>
-        <div className={styles.buttons}>
-          {/* <Link
-            className="button button--secondary button--lg"
-            to="/docs/intro">
-            Docusaurus Tutorial - 5min ⏱️
-          </Link> */}
-        </div>
       </div>
     </header>
   );
@@ -35,11 +33,11 @@ export default function Home(): ReactNode {
     <Layout
       title={`${siteConfig.title}`}
       description="Septopus Rex homepage. <head />">
-      <div> Start from 6/19 2025. On King yet, Founder address:<span></span></div>
+      <SeptopusStatus />
       <HomepageHeader />
-      <main>
+      {/* <main>
         <HomepageFeatures />
-      </main>
+      </main> */}
     </Layout>
   );
 }

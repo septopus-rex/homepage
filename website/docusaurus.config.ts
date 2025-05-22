@@ -78,7 +78,7 @@ const config: Config = {
       },
       items: [
         {
-          to: 'septopus',
+          to: 'declaration',
           label: 'Declaration',
           position: 'left',
         },
@@ -106,15 +106,6 @@ const config: Config = {
     footer: {
       style: 'dark',
       links: [
-        // {
-        //   title: 'Docs',
-        //   items: [
-        //     {
-        //       label: 'Tutorial',
-        //       to: '/docs/intro',
-        //     },
-        //   ],
-        // },
         {
           title: 'Community',
           items: [
@@ -128,7 +119,45 @@ const config: Config = {
             },
             {
               label: 'X',
+              href: 'https://x.com/SeptopusRex',
+            },
+            {
+              label: 'Reddit',
               href: 'https://x.com/docusaurus',
+            },
+          ],
+        },
+        {
+          title: 'Code',
+          items: [
+            {
+              label: 'Github',
+              href: 'https://github.com/septopus-rex',
+            },
+          ],
+        },
+        {
+          title: 'Launch Peroid',
+          items: [
+            {
+              label: 'Founder',
+              href: 'https://x.com/metanchor',
+            },
+            {
+              label: 'Rule Center',
+              href: 'https://github.com/septopus-rex/rule',
+            },
+            {
+              label: 'Septopus World',
+              href: 'https://github.com/septopus-rex/world',
+            },
+            {
+              label: 'King Center',
+              href: 'https://github.com/septopus-rex/king',
+            },
+            {
+              label: 'AI Center',
+              href: 'https://github.com/septopus-rex/ai',
             },
           ],
         },
