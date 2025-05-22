@@ -12,7 +12,7 @@ export default function MoneyIn() {
             fontSize: '20px',
           }}>
           <p>
-            How to earn money and assets status.
+            Rule of Septopus, discuss the rule to add here.
           </p>
         </div>
     </Layout>

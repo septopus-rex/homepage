@@ -1,7 +1,7 @@
 import React from 'react';
 import Layout from '@theme/Layout';
 
-export default function Production() {
+export default function MoneyOut() {
   return (
     <Layout title="Septopus Money In" description="Assets list of septopus res.">
       <div
@@ -12,12 +12,9 @@ export default function Production() {
           height: '50vh',
           fontSize: '20px',
         }}>
-        
-        <ul>
-          <li>W3OS</li>
-          <li>Hash Lottery</li>
-          <li>LuckySig</li>
-        </ul>
+        <p>
+          Septopus Declaration
+        </p>
       </div>
     </Layout>
   );

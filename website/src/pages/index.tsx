@@ -35,6 +35,7 @@ export default function Home(): ReactNode {
     <Layout
       title={`${siteConfig.title}`}
       description="Septopus Rex homepage. <head />">
+      <div> Start from 6/19 2025. On King yet, Founder address:<span></span></div>
       <HomepageHeader />
       <main>
         <HomepageFeatures />

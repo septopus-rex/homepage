@@ -73,34 +73,23 @@ const config: Config = {
     navbar: {
       title: 'Home',
       logo: {
-        alt: 'Septopus Dex Logo',
-        src: 'img/logo.svg',
+        alt: 'Septopus Logo',
+        src: 'img/logo.png',
       },
       items: [
         {
-          to: 'MoneyIn',
-          label: 'Money In',
+          to: 'septopus',
+          label: 'Declaration',
           position: 'left',
         },
+        // {
+        //   to: 'rule',
+        //   label: 'Rule',
+        //   position: 'left',
+        // },
         {
-          to: 'MoneyOut',
-          label: 'Money Out',
-          position: 'left',
-        },
-        {
-          to: 'roadmap',
-          label: 'Roadmap',
-          position: 'left',
-        },
-        {
-          type: 'docSidebar',
-          sidebarId: 'chatSidebar',
-          position: 'left',
-          label: 'AI·Log',
-        },
-        {
-          to: 'Production',
-          label: 'Production',
+          to: 'project',
+          label: 'Project',
           position: 'left',
         },
         {

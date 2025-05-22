@@ -8,8 +8,8 @@
   text-align: center;
   position: relative;
   overflow: hidden;
-  background-image: url("image/dinner.webp");
-  min-height: 880px;
+  background-image: url("image/banner.png");
+  min-height: 690px;
 }
 
 @media screen and (max-width: 996px) {
