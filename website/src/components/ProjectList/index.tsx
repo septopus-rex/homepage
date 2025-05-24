@@ -5,15 +5,15 @@ import styles from './styles.module.css';
 
 type ProjectItem = {
   title: string;
-  Svg: React.ComponentType<React.ComponentProps<'svg'>>;
+  thumb: string;
   description: ReactNode;
   github: string;
 };
 
-const FeatureList: ProjectItem[] = [
+const List: ProjectItem[] = [
   {
     title: 'Rules Center',
-    Svg: require('@site/static/img/undraw_docusaurus_mountain.svg').default,
+    thumb: "/img/project/rule_center.png",
     description: (
       <>
         Discuss board for rules.
@@ -23,7 +23,7 @@ const FeatureList: ProjectItem[] = [
   },
   {
     title: 'Septopus World',
-    Svg: require('@site/static/img/undraw_docusaurus_react.svg').default,
+    thumb: "/img/project/septopus_world.png",
     description: (
       <>
         Solution of Septopus World on Solana Network
@@ -33,7 +33,7 @@ const FeatureList: ProjectItem[] = [
   },
   {
     title: 'King Center',
-    Svg: require('@site/static/img/undraw_docusaurus_react.svg').default,
+    thumb: "/img/project/king_center.png",
     description: (
       <>
         King management center.
@@ -44,7 +44,7 @@ const FeatureList: ProjectItem[] = [
   ,
   {
     title: 'AI Center',
-    Svg: require('@site/static/img/undraw_docusaurus_react.svg').default,
+    thumb: "/img/project/ai_center.png",
     description: (
       <>
         AI management center.
@@ -54,11 +54,11 @@ const FeatureList: ProjectItem[] = [
   },
 ];
 
-function Feature({title, Svg, description,github}: ProjectItem) {
+function Feature({title,thumb, description,github}: ProjectItem) {
   return (
     <div className={clsx('col col--4')}>
       <div className="text--center">
-        <Svg className={styles.featureSvg} role="img" />
+        <img src={thumb} alt="" className={styles.thumb}/>
       </div>
       <div className="text--center padding-horiz--md">
         <Heading as="h3">{title}</Heading>
@@ -74,7 +74,7 @@ export default function ProjectList(): ReactNode {
     <section className={styles.features}>
       <div className="container">
         <div className="row">
-          {FeatureList.map((props, idx) => (
+          {List.map((props, idx) => (
             <Feature key={idx} {...props} />
           ))}
         </div>

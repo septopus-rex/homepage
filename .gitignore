@@ -138,3 +138,5 @@ dist
 # Mac system file
 .DS_Store
 **/.DS_Store
+
+**/build
