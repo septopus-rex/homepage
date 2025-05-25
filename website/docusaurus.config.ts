@@ -28,7 +28,8 @@ const config: Config = {
   // may want to replace "en" with "zh-Hans".
   i18n: {
     defaultLocale: 'en',
-    locales: ['en','zh-Hans','fr'],
+    //locales: ['en','zh-Hans','fr'],
+    locales: ['en'],
   },
   // plugins: [
   //   '@docusaurus/plugin-content-docs',
@@ -96,11 +97,11 @@ const config: Config = {
           type: 'localeDropdown',
           position: 'right',
         },
-        // {
-        //   href: 'https://github.com/ff13dfly/septopus',
-        //   label: 'GitHub',
-        //   position: 'right',
-        // },
+        {
+          href: 'https://github.com/septopus-rex/homepage',
+          label: 'GitHub',
+          position: 'right',
+        },
       ],
     },
     footer: {

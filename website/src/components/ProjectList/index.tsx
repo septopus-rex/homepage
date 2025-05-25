@@ -2,11 +2,12 @@ import type {ReactNode} from 'react';
 import clsx from 'clsx';
 import Heading from '@theme/Heading';
 import styles from './styles.module.css';
+import { FaGit,FaGithub } from "react-icons/fa";
 
 type ProjectItem = {
   title: string;
   thumb: string;
-  description: ReactNode;
+  //description: ReactNode;
   github: string;
 };
 
@@ -14,56 +15,56 @@ const List: ProjectItem[] = [
   {
     title: 'Rules Center',
     thumb: "/img/project/rule_center.png",
-    description: (
-      <>
-        Discuss board for rules.
-      </>
-    ),
+    // description: (
+    //   <>
+    //     Discuss board for rules.
+    //   </>
+    // ),
     github:"https://github.com/septopus-rex/rule",
-  },
-  {
-    title: 'Septopus World',
-    thumb: "/img/project/septopus_world.png",
-    description: (
-      <>
-        Solution of Septopus World on Solana Network
-      </>
-    ),
-    github:"https://github.com/septopus-rex/world",
   },
   {
     title: 'King Center',
     thumb: "/img/project/king_center.png",
-    description: (
-      <>
-        King management center.
-      </>
-    ),
+    // description: (
+    //   <>
+    //     King management center.
+    //   </>
+    // ),
     github:"https://github.com/septopus-rex/king",
   },
   ,
   {
     title: 'AI Center',
     thumb: "/img/project/ai_center.png",
-    description: (
-      <>
-        AI management center.
-      </>
-    ),
+    // description: (
+    //   <>
+    //     AI management center.
+    //   </>
+    // ),
     github:"https://github.com/septopus-rex/ai",
+  },
+  {
+    title: 'Septopus World',
+    thumb: "/img/project/septopus_world.png",
+    // description: (
+    //   <>
+    //     Solution of Septopus World on Solana Network
+    //   </>
+    // ),
+    github:"https://github.com/septopus-rex/world",
   },
 ];
 
-function Feature({title,thumb, description,github}: ProjectItem) {
+function Feature({title,thumb,github}: ProjectItem) {
   return (
-    <div className={clsx('col col--4')}>
+    <div className={clsx('col col--4')} style={{paddingBottom:"30px"}}>
       <div className="text--center">
+        <Heading as="h3">{title}</Heading>
         <img src={thumb} alt="" className={styles.thumb}/>
       </div>
       <div className="text--center padding-horiz--md">
-        <Heading as="h3">{title}</Heading>
-        <p>{description}</p>
-        <p><a href={github} target='_blank'>{github}</a></p>
+        {/* <p>{description}</p> */}
+        <span className={styles.git}><FaGithub size={24}/></span> <a href={github} target='_blank'> {github}</a>
       </div>
     </div>
   );
