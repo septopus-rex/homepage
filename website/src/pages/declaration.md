@@ -1,4 +1,4 @@
-# **Septopus Declaration**
+# Septopus Declaration
 
 ## **Preface: The Awakening of Ideals**
 

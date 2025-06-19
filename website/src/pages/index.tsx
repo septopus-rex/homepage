@@ -33,7 +33,7 @@ export default function Home(): ReactNode {
     <Layout
       title={`${siteConfig.title}`}
       description="Septopus Rex homepage. <head />">
-      <SeptopusStatus />
+      {/* <SeptopusStatus /> */}
       <HomepageHeader />
       {/* <main>
         <HomepageFeatures />
