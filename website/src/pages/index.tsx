@@ -17,9 +17,9 @@ function HomepageHeader() {
         <Heading as="h1" className={clsx('hero__title', styles.heroTitle)}>
           <p>
             Keep<br />
-            Freedom<br />
-            Great<br />
-            Always
+            Fairness<br />
+            Forever<br />
+            Great
           </p>
         </Heading>
       </div>
