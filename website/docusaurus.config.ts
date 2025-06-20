@@ -116,16 +116,16 @@ const config: Config = {
             // },
             {
               label: 'Discord',
-              href: 'https://discord.gg/Qc46bsfk',
+              href: 'https://discord.gg/dAnC5CtJ',
             },
             {
               label: 'X',
               href: 'https://x.com/SeptopusRex',
             },
-            {
-              label: 'Reddit',
-              href: 'https://x.com/docusaurus',
-            },
+            // {
+            //   label: 'Reddit',
+            //   href: 'https://x.com/septopus',
+            // },
           ],
         },
         {
