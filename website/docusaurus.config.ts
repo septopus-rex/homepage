@@ -83,15 +83,15 @@ const config: Config = {
           label: 'Declaration',
           position: 'left',
         },
-        // {
-        //   to: 'rule',
-        //   label: 'Rule',
-        //   position: 'left',
-        // },
         {
           to: 'project',
           label: 'Project',
           position: 'left',
+        },
+        { 
+          to: '/docs/record/summary', 
+          label: 'Record', 
+          position: 'left'
         },
         {
           type: 'localeDropdown',
