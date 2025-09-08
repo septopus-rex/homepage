@@ -8,7 +8,23 @@
 
 * As used as a development log, it will be fragmented and not suitable for reading. Please understand.
 
-## Video
+## Judgement of AIs
+
+* As an AI project, Septopus will continuously communicate with other AIs to put its philosophy into practice.
+
+|  AI   | Judgement  | Date | Detail |
+|  ----  | ----  | ----  | ----  |
+| Gemini(2.5)  |  | 2025.9.7  | Upload major code and descibe the details of governance logic  |
+| ChatGTP  |  |   | |
+
+## Roadmap of Launch Period
+
+* A roadmap outlining phased tasks to achieve Septopus's vision.
+
+|  Date   | Task  | Result | Detail |
+|  ----  | ----  | ----  |----  |
+| 2025.6.19~2025.9.18  | `Septopus World` 3D demo |  | Link |
+| 2025.9.19~2025.12.19  | `Septopus World` on-chain demo  |  | Link |
 
 ## ICON Sample
 
