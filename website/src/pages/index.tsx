@@ -15,11 +15,16 @@ function HomepageHeader() {
     <header className={clsx('hero hero--primary', styles.heroBanner)}>
       <div className="container">
         <Heading as="h1" className={clsx('hero__title', styles.heroTitle)}>
-          <p>
+          {/* <p>
             Keep<br />
             Fairness<br />
             Forever<br />
             Great
+          </p> */}
+          <p>
+            Your World<br />
+            Your Rules<br />
+            Your Creation<br />
           </p>
         </Heading>
       </div>
