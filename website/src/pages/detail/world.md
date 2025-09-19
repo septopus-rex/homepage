@@ -2,6 +2,9 @@
 
 ![world](img/world.png)
 
+* Demo: [https://world.septopus.xyz](https://world.septopus.xyz)
+* Document: [http://localhost:3000/docs/world/](http://localhost:3000/docs/world/)
+
 ## World Auction
 
   1. 总发行的World数量为100个，每个世界由4096*4096个Block构成

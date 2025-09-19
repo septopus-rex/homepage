@@ -92,8 +92,9 @@ const config: Config = {
         },
         { 
           to: '/docs/record/summary', 
-          label: 'Record', 
-          position: 'left'
+          label: 'Document', 
+          position: 'left',
+          activeBasePath:'/docs',
         },
         {
           type: 'localeDropdown',
