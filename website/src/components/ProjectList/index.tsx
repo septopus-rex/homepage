@@ -7,7 +7,7 @@ import { FaGit,FaGithub } from "react-icons/fa";
 type ProjectItem = {
   title: string;
   thumb: string;
-  //description: ReactNode;
+  detail: string;
   github: string;
 };
 
@@ -15,6 +15,7 @@ const List: ProjectItem[] = [
   {
     title: 'Rules Center',
     thumb: "/img/project/rule_center.png",
+    detail:"rules",
     // description: (
     //   <>
     //     Discuss board for rules.
@@ -25,6 +26,7 @@ const List: ProjectItem[] = [
   {
     title: 'King Center',
     thumb: "/img/project/king_center.png",
+    detail:"king",
     // description: (
     //   <>
     //     King management center.
@@ -36,6 +38,7 @@ const List: ProjectItem[] = [
   {
     title: 'AI Center',
     thumb: "/img/project/ai_center.png",
+    detail:"ai",
     // description: (
     //   <>
     //     AI management center.
@@ -46,6 +49,7 @@ const List: ProjectItem[] = [
   {
     title: 'Septopus World',
     thumb: "/img/project/septopus_world.png",
+    detail:"world",
     // description: (
     //   <>
     //     Solution of Septopus World on Solana Network
@@ -55,12 +59,14 @@ const List: ProjectItem[] = [
   },
 ];
 
-function Feature({title,thumb,github}: ProjectItem) {
+function Feature({title,thumb,detail,github}: ProjectItem) {
   return (
     <div className={clsx('col col--4')} style={{paddingBottom:"30px"}}>
       <div className="text--center">
         <Heading as="h3">{title}</Heading>
-        <img src={thumb} alt="" className={styles.thumb}/>
+        <a href={"detail/"+detail}>
+          <img src={thumb} alt="" className={styles.thumb}/>
+        </a>
       </div>
       <div className="text--center padding-horiz--md">
         {/* <p>{description}</p> */}

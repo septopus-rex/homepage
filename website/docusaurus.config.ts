@@ -88,6 +88,7 @@ const config: Config = {
           to: 'project',
           label: 'Project',
           position: 'left',
+          activeBasePath:'detail',
         },
         { 
           to: '/docs/record/summary', 
