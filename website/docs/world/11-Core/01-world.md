@@ -1,1 +1,0 @@
-# World, system entry
