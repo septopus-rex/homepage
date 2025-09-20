@@ -86,12 +86,12 @@ const config: Config = {
         },
         {
           to: 'project',
-          label: 'Project',
+          label: 'Projects',
           position: 'left',
           activeBasePath:'detail',
         },
         { 
-          to: '/docs/record/summary', 
+          to: '/docs/septopus', 
           label: 'Docs', 
           position: 'left',
           activeBasePath:'/docs',

@@ -1,4 +1,4 @@
-# Septopus System Overview
+# Virtual World System
 
 * Septopus World需要全链运行，基于此，开发独立的3D引擎。使用Javascript作为开发语言，方便在多平台进行移植。
 * Septopus 采用Solana作为部署的区块链网络。
@@ -7,6 +7,10 @@
 * Septopus World采用全链部署，因此所有需要的数据都在链上，可以通过其他方式进行渲染呈现。
 * Septopus引擎采用模块设计，不同的功能模块可以支持多种实现。
 * Septopus引擎支持灵活的扩展，有针对构建内容的**附属物**方式，有提供额外功能的**插件**方式。
+
+## 经济模型
+
+## 系统开发
 
 ## 引擎的使用
 
