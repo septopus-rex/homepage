@@ -1,6 +1,6 @@
 # Septopus Rules
 
-![world](img/rules.png)
+![world](../image/rules.png)
 
 ## Rules On Chain
 

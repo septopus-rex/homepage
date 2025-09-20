@@ -92,7 +92,7 @@ const config: Config = {
         },
         { 
           to: '/docs/record/summary', 
-          label: 'Document', 
+          label: 'Docs', 
           position: 'left',
           activeBasePath:'/docs',
         },
@@ -129,14 +129,18 @@ const config: Config = {
             //   label: 'Reddit',
             //   href: 'https://x.com/septopus',
             // },
-          ],
-        },
-        {
-          title: 'Code',
-          items: [
             {
               label: 'Github',
               href: 'https://github.com/septopus-rex',
+            },
+          ],
+        },
+        {
+          title: 'Contact',
+          items: [
+            {
+              label: 'Email',
+              href: 'mailto:admin@septopus.xyz',
             },
           ],
         },

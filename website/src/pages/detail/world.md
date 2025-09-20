@@ -1,8 +1,8 @@
 # Septopus World
 
-![world](img/world.png)
+![world](../image/world.png)
 
-* Demo: [https://world.septopus.xyz](https://world.septopus.xyz)
+* Homepage: [https://world.septopus.xyz](https://world.septopus.xyz)
 * Document: [http://localhost:3000/docs/world/](http://localhost:3000/docs/world/)
 
 ## World Auction

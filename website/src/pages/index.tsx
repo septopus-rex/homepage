@@ -13,15 +13,10 @@ function HomepageHeader() {
   const {siteConfig} = useDocusaurusContext();
   return (
     <header className={clsx('hero hero--primary', styles.heroBanner)}>
-      <div className="container">
+      <div className="container">      
         <Heading as="h1" className={clsx('hero__title', styles.heroTitle)}>
-          {/* <p>
-            Keep<br />
-            Fairness<br />
-            Forever<br />
-            Great
-          </p> */}
           <p>
+            {/* <div id="septopus">Canvas here</div> */}
             Your World<br />
             Your Rules<br />
             Your Creation<br />
