@@ -47,7 +47,7 @@ const List: ProjectItem[] = [
     github:"https://github.com/septopus-rex/ai",
   },
   {
-    title: 'Septopus World',
+    title: 'Meta Septopus',
     thumb: "/img/project/septopus_world.png",
     detail:"world",
     // description: (

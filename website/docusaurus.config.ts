@@ -92,7 +92,7 @@ const config: Config = {
         },
         { 
           to: '/docs/septopus', 
-          label: 'Docs', 
+          label: 'Documents', 
           position: 'left',
           activeBasePath:'/docs',
         },

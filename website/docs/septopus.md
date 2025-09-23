@@ -1,20 +1,36 @@
-# Septopus, new governance module
+# Septopus, Your Rules, Your Worlds
 
-## 实现目标
+## Goal
 
-* 实现`宣言`的去中心化管理的世界，分项目来落实整个项目。
+* 为了实现[`Septopus Declaration`](/declaration)里的去中心世界，现在将其拆分成4个主要的Project，来完整落地。
 
 |项目名 | 实现目标 | 实施方案 | 时间 |
 |--- | --- | --- | --- |
-| Rules Center | |  |  |
-| Septopus World | 验证参与者、所有活动的主场所 |  | 2025.6.19～2025.12.19 |
-| King Management |  |  |  |
-| AI Management |  |  |  |
+| [Meta Septopus](/docs/world/overview) | 验证参与者、所有活动的主场所 | 虚拟世界 | 2025.6.19～2025.12.19 |
+| Rules Center | 从管理宣言开始，建立去中心化在线规则的自洽系统 | Solana智能合约实现 |  |
+| King Management | 实现King的各种功能，建立统一的管理流程，建立统一的资金分发流程 | Solana智能合约实现 |  |
+| AI Management | AI管理部分，建立AI审核机制、AI对项目的判断和审核流程 | - |  |
+
+* 其中的`Septopus World`是非常重要的一个组成部分，它是由多个元宇宙构成的，是一个无论从发行到管理，都是去中心的虚拟世界。`Septopus World`也是[`Septopus Declaration`](https://septopus.xyz/declaration)里实现的第一个Project，也用来验证完整的管理流程，从项目创建、发行token、分发token、收益管理等操作，都实验性的进行测试。
+  
+* 使用AI来进行全流程的管理，是`Septopus`极大的创新之处，由于AI的高效和公正，将有利于`创业者`深度参与`Septopus`的共建，也能获得资金支持。`King`来最后把关，在流程上实现了最终的权力。那整个`Septopus`是最精简的`政府体系`，是的，只有一个人的政府系统，而这唯一的人，也是通过乐透的方式，随机选择的。这是这个时代，`政府体系`精简的极限，让我们一起来创建这个有趣的`政府体系`。
 
 ## 经济模型
 
-## 发行方式
+* `Septopus`以`Project`的方式来建立经济体系，使用token作为项目回报，旨在建立能自持的经济系统。`Septopus`将募集来的资金，使用AI进行判断，对Project进行投资。所有`Septopus`的参与者，可以定期从`Septopus`支出的分红中获取收益，无论是现有的数字资产还是Project发行的token。
+  
+* `Septopus`是一个开放的世界，所有的`参与者`都可以无差别的提交`Project`来获取投资，发起人将得到数字货币的支持。无论是`Project`的提案审核还是资金分发，都需要经过7个AI进行审核，之后提交`King`进行批准。
 
-## 呈现方式
+## 资金募集
 
-## 路线图
+* `Septopus`不限制资金募集的方式，目前主要有以下几种
+
+|募集方式 | Description | Sample |
+|--- | --- | --- |
+| 捐赠 | 接受数字资产的捐赠 | 放捐赠的链接 |
+| 发行Token | `Septopus`发行自己的token | ERC20, BRC20 |
+| Project分成 | `Septopus`投资的`Project`的分成 | `Septopus World` |
+| Project的Token | `Septopus`投资的`Project`发行的Token | `Septopus World` |
+
+## 和AI的互动
+

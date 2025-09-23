@@ -6,6 +6,9 @@
 
 ## 合约结构（CPI）
 
+* 合约采用[Solana CPI](https://solana.com/docs/core/cpi)的结构，保持对外的接口一致。
+* CPI的采用也支持King对所有审核的签署。
+
 ## 合约实现
 
 ### Rules
