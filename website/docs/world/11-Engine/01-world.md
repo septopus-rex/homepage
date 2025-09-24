@@ -1,27 +1,52 @@
 # World, system entry
 
-* `世界`(world)是Septopus的发行单元，可以通过世界的配置来实现不同风格和尺寸的`世界`。例如，在Septopus的设置中，将发行99个独立的`世界`，每个世界的尺寸为4096*4096，每个`地块`的尺寸为物理世界的16m*16m。
+* `World`是引擎启动的入口，下面是调用的代码示例。仅需提供一个DOM容器就可以启动整个`Meta Septopus`系统。
+
+    ```Javascript
+        import Engine from `septopus`;
+
+        const DOM_ID="div_dom";
+        const cfg={...};
+
+        Engine.launch(DOM_ID,cfg,()=>{
+            console.log(`Septopus World loaded successful.`);
+        });
+    ```
+
+* `World`主要提供了以下的功能。
+
+    | 方法名 | 作用 | 示例 |
+    | --- | --- | --- |
+    | init | 初始化系统 |  `VBW.world.init( cfg )` |
+    | first | 初次运行引擎，启动入口 | `VBW.world.first( dom_id, ck, cfg )` |
+    | load | 加载block |  `VBW.world.load( dom_id, world, x, y )` |
+    | unload | 卸载block | `VBW.world.unload( dom_id, world, x, y )` |
+    | stop | 停止渲染 | `VBW.world.start( dom_id )` |
+    | start | 开始渲染 | `VBW.world.stop( dom_id )` |
+    | teleport | 将玩家传送到指定地块 | `VBW.world.teleport( dom_id, world, x, y, ck, position )` |
+    | edit | 将玩家所在地块变为编辑状态 | `VBW.world.edit( dom_id, world, x, y, ck )` |
+    | select | 选中附属物的操作 | `VBW.world.select( dom_id, world, x, y, name, index, face, ck )` |
+    | modify | 对编辑内容进行保存的操作 | `VBW.world.modify( tasks, dom_id, world, ck )` |
+    | normal | 关闭编辑状态，恢复到正常状态 | `VBW.world.normal( dom_id, world, ck )` |
+
+* `World`的启动过程如下，执行`World.first()`，实现以下操作：
+    1. 构建Dom，用于UI输出；
+    2. 注册所有组件，构建完整的运行系统；
+    3. 绑定订阅事件，自动获取订阅的链上数据；
+    4. 获取`玩家`的定位信息，准备加载数据;
+    5. 根据`玩家`的信息，加载`世界`的配置文件；
+    6. 根据`玩家`所在的`地块`信息，加载对应区域的`地块`信息；
+    7. 分析`地块`，获取到需要链上加载的资源，推入到帧同步的队列里；
+    8. 运行渲染器；
+    9. 运行控制器；
 
 ## 世界基础信息
 
-### 世界的作用
-
-* 确认`参与者`的身份，是整个Septpus进行治理的基础。
-* 内容创作的载体。
-* 创建虚拟世界的社会关系。
-
-### 世界的发行
-
-* 新发行`世界`需要在前一个`世界`完全销售的情况下才行。
-* `世界`需要设置一个`领主`，来配置`世界`的参数。`领主`的治理，可以带来`世界`的变化，让不同的`世界`可以差异化的竞争。
-* `领主`的权限可以售卖转让。
-
 ### 基本属性
 
-* Septopus的世界，所有`世界`共用的属性。
+* Septopus所有`World`共用的属性如下。
 
 ```Javascript
-    //!important, 通用的世界配置，在初始化时写完，不能修改.
     {
         world:{     //Septopus的整体设置
             name: "Septopus World",          //Septopus的名称
@@ -57,11 +82,9 @@
     }
 ```
 
-* Septopus的世界，支持相同的`附属物`，。
-
 ### 世界的参数
 
-* `世界`参数以JSON的形式保存在合约里，只有`领主`可以修改更新。
+* 单一`World`参数设置如下，只有`World Owner`可以修改更新。
 
 ```Javascript
     //!important, 每个世界的单独配置，领主可以进行修改
@@ -77,6 +100,7 @@
             accuracy: 1000,     //初始的显示尺寸支持。默认单位为m，这里是转换成mm来显示
             index:0,            //世界编号
         },
+        price: 1000000,         //block的初始化价格
         block:{     //地块的world可配置的参数
             elevation: 0,       //初始海拔高度
             max: 30,            //单地块最大附属物数量
@@ -116,26 +140,6 @@
                 scale:[2,2,2],        //虚拟形象身体尺寸的最大放大比例, [高,宽,深]
             },
         },
-        blacklist:[0x00b7],           //世界单独配置的，不支持的`附属物`列表
+        adjunct:[0x00b7],           //世界配置支持的附属物
     }
 ```
-
-### 世界的终止
-
-* `世界`不设置终止方式，销售一旦开启就不会关闭。
-* Septopus预设的99个独立`世界`发行完毕后，不再增发，不能看成是`世界`的终止，只是发行的终止。
-* 当`世界`没有玩家参与的时候，才是真正意义上的终止。
-
-## 世界的启动
-
-* 通过上面的介绍，程序启动运行世界，是一个涉及到很多动态数据的过程。因此，将其独立出来，也是作为Septopus世界的启动入口来对待。
-
-* 世界启动的方法在`World.first()`，主要执行了以下操作：
-    1. 构建Dom，用于输出信息；
-    2. 绑定订阅事件，自动获取订阅的链上数据；
-    3. 获取`玩家`的定位信息，准备加载数据;
-    4. 根据`玩家`的信息，加载`世界`的配置文件；
-    5. 根据`玩家`所在的`地块`信息，加载对应区域的`地块`信息；
-    6. 分析`地块`，获取到需要链上加载的资源，推入到帧同步的队列里；
-    7. 运行渲染器；
-    8. 运行控制器；

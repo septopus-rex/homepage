@@ -1,7 +1,11 @@
 # Block, bedrock of world
 
-* `地块`(block)是Septopus的基础数据单元，通过将一个个的`地块`数据进行拼接，就构成了完整的Septopus的世界。
+* `Block`是Septopus的基础数据单元，通过将一个个的`Block`进行拼接，就构成了完整的Septopus的`World`。每个`Block`的尺寸为物理世界的16m*16m。
+  
+* `Engine`使用动态加载的方式，只加载`Player`所在区域的`Block`，极大的降低了数据的加载量。
 
+* `Block`与`Adjunct`功能基本一致，但又不是`Adjunct`，它是`Adjunct`定位的基础，需要实现更多的功能。
+  
 ## 基础属性
 
 * `地块`只有唯一的所有者。一个`玩家`可以拥有多块土地。

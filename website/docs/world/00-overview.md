@@ -16,7 +16,7 @@
 ### World机制
 
 * `Meta Septopus`是一个自运行的系统，是通过以下的发行方式来实现的
-  1. 总发行的`World`数量为100个，每个世界由4096*4096个`Block`构成
+  1. 总发行的`World`数量为100个，每个世界由4096*4096个`Block`构成，每个`地块`的尺寸为物理世界的16m*16m。
   2. #0 World由`King`发起拍卖，正式开启自主运行的`Meta Septopus`。确认World Owner后，`Block`就可以进行购买。
   3. `Block`的默认销售价格为0.01SOL，销售收入由`World Owner`和`Meta Treasure`分成，为5:5。即每销售1个`Block`，`World Owner`得0.005SOL，`Meta Treasure`得0.005SOL。
   4. 待销售率达到60%时，开启下一个世界的拍卖，同时当前的World Owner可以修改初始销售Block的价格。和Septopus国库分成比例不变，即每销售1个Block，Septopus国库仍得0.005SOL。
@@ -68,17 +68,7 @@
 
 ### 3D引擎
 
-* `Meta Septopus`的`3D引擎`，使用单一入口，引擎打包成独立的文件，方便调用，可以轻松的部署到各类应用中。下面是调用的代码示例。
-
-    ```Javascript
-        import Engine from `septopus`;
-
-        const DOM_ID="";
-        const cfg={...};
-        Engine.launch(DOM_ID,cfg,()=>{
-            console.log(`Septopus World loaded successful.`);
-        });
-    ```
+* `Meta Septopus`的`3D引擎`，使用单一入口，引擎打包成独立的文件，方便调用，可以轻松的部署到各类应用中。
 
 * `3D引擎`执行逻辑如图所示
 
