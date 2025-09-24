@@ -1,18 +1,5 @@
 # World, system entry
 
-* `World`是引擎启动的入口，下面是调用的代码示例。仅需提供一个DOM容器就可以启动整个`Meta Septopus`系统。
-
-    ```Javascript
-        import Engine from `septopus`;
-
-        const DOM_ID="div_dom";
-        const cfg={...};
-
-        Engine.launch(DOM_ID,cfg,()=>{
-            console.log(`Septopus World loaded successful.`);
-        });
-    ```
-
 * `World`主要提供了以下的功能。
 
     | 方法名 | 作用 | 示例 |

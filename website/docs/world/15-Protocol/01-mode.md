@@ -1,4 +1,4 @@
-# Mode
+# Mode Protocol
 
 * 使用`Framework`的`mode`方法进行模式切换，调用如下：
 
