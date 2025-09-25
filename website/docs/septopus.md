@@ -30,9 +30,7 @@
 |募集方式 | Description | Sample |
 |--- | --- | --- |
 | 捐赠 | 接受数字资产的捐赠 | 放捐赠的链接 |
-| 发行Token | `Septopus`发行自己的token | ERC20, BRC20 |
-| Project分成 | `Septopus`投资的`Project`的分成 | `Septopus World` |
-| Project的Token | `Septopus`投资的`Project`发行的Token | `Septopus World` |
+| 发行Token | `Septopus`发行自己的token | ERC20, SPL Token |
+| Project的Token | `Septopus`投资的`Project`发行的Token | `Meta Septopus` |
 
 ## 和AI的互动
-

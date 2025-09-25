@@ -1,8 +1,14 @@
 # System Overview
 
+* `Septopus引擎`的作用，是将链上`Meta Septopus`的数据，构建出一个3D世界。`Septopus引擎`可以看成是一个链上数据的解析器，实现了`Meta Septopus`协议，可以在3D虚拟环境里，进行交互。
+  
+* `Septopus引擎`采用`Javascript`作为开发语言，渲染引擎使用[three.js](https://threejs.org)。采用开源方式进行发布，Github地址为[https://github.com/septopus-rex/world](https://github.com/septopus-rex/world)。
+
+* `Septopus引擎`可以分为两部分，一是构建第一人称的3D环境的**核心系统**，二是为扩展功能的**附属物**。
+
 ## 基础说明
 
-* `Septopus坐标系`如下图所示，XY轴为`Block`的方向，Z轴为`玩家`站立的方向。不同于`three.js`的默认坐标系。
+* `Septopus坐标系`如下图所示，XY轴为`玩家`水平站立平面，Z轴为天空的方向。不同于`three.js`的默认坐标系。
 
 |  Septopus坐标系   | Three.js坐标系  |
 |  ----  | ----  |
