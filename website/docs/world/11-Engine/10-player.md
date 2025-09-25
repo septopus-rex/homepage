@@ -1,5 +1,7 @@
 # Player
 
+* 代码位置:[/core/player.js](https://github.com/septopus-rex/world/blob/main/engine/src/septopus/core/player.js),[/core/movment.js](https://github.com/septopus-rex/world/blob/main/engine/src/septopus/core/movment.js)
+
 ## 运动方式
 
 * 通过修改`玩家`的运动能力，来实现步行和跑步。同时`玩家`的`运动方式`也进行更新。

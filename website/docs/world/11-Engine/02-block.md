@@ -1,5 +1,7 @@
 # Block, bedrock of world
 
+* 代码位置:[/core/block.js](https://github.com/septopus-rex/world/blob/main/engine/src/septopus/core/world.js)
+
 * `Block`是Septopus的基础数据单元，通过将一个个的`Block`进行拼接，就构成了完整的Septopus的`World`。每个`Block`的尺寸为物理世界的16m*16m。
   
 * `Engine`使用动态加载的方式，只加载`Player`所在区域的`Block`，极大的降低了数据的加载量。

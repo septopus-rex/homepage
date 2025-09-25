@@ -1,5 +1,7 @@
 # Module
 
+* 代码位置:[/adjunct/basic_module.js](https://github.com/septopus-rex/world/blob/main/engine/src/septopus/adjunct/basic_module.js)
+  
 * 得益于thress.js强大，**module**支持多种软件导出的格式。
 
 * 样例数据如下：

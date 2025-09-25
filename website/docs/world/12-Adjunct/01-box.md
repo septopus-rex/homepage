@@ -1,5 +1,7 @@
 # Box
 
+* 代码位置:[/adjunct/basic_box.js](https://github.com/septopus-rex/world/blob/main/engine/src/septopus/adjunct/basic_box.js)
+
 * `盒子`是3D里最常见的组件，其也是`附属物`的一种，基本情况参照[附属物详情](./adjunct.md)。
 * `盒子`还可以作为`附属物`开发的参考，理解`附属物`在Septopus中的运行机制。
 

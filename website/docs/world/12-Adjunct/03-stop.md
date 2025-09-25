@@ -1,5 +1,7 @@
 # Stop
 
+* 代码位置:[/adjunct/basic_stop.js](https://github.com/septopus-rex/world/blob/main/engine/src/septopus/adjunct/basic_stop.js)
+
 * `阻拦体`(stop)是基础的系统组件，用于空间的阻断。在系统中会进行单独的计算，是一种特殊的附属物，和`Trigger`类似，也是在世界环境里触发的。
 * `附属物`可以通过设置属性来实现`阻拦体`的功能，使用`附属物`的尺寸来创建。
 * `阻拦体`被看成是`附属物`的一种，因其在`编辑模式`下也会在3D场景里显示，行为特征和其他`附属物`一致。

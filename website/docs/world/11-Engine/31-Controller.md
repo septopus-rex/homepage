@@ -6,9 +6,9 @@
 
 |  资源类型   | 主要用途  | 设备支持  | 代码位置  |
 |  ----  | ----  | ----  | ----  |
-|  第一人称控制器  |  在3D世界里以第一人称运动的控制 |  [PC,Mobile] | `./control/control_fpv.js`  |
-|  2D控制器 | 2D地图控制器  | [PC,Mobile] | `./control/control_2d.js`  |
-|  观察者控制器  | 3D内容观察者控制器  | [PC,Mobile] |  `./control/control_observe.js`  |
+|  第一人称控制器  |  在3D世界里以第一人称运动的控制 |  [PC,Mobile] | `/control/control_fpv.js`  |
+|  2D控制器 | 2D地图控制器  | [PC,Mobile] | `/control/control_2d.js`  |
+|  观察者控制器  | 3D内容观察者控制器  | [PC,Mobile] |  `/control/control_observe.js`  |
 
 ## 程序结构
 

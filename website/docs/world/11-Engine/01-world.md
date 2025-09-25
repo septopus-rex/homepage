@@ -1,5 +1,7 @@
 # World, system entry
 
+* 代码位置:[/core/world.js](https://github.com/septopus-rex/world/blob/main/engine/src/septopus/core/world.js)
+
 * `World`主要提供了以下的功能。
 
     | 方法名 | 作用 | 示例 |
