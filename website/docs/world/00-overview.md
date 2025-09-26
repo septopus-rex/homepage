@@ -1,125 +1,119 @@
-# Virtual World System
+# Meta Worlds System
 
-* `Meta Septopus`是`Septopus`系统的基石，一是用来确认`Septopus`的参与者，二是`Septopus`的主入口。
-* `Meta Septopus`是被设计为一个完全的去中心化系统，从程序和数据两个方面做出了开创性的设计。从数据角度来看，`Meta Septopus`数据定义完全开放公布在链上，即使没有现在的解析器（Virtual Block World），只需遵循协议，也能还原出一样的虚拟是恶疾。从程序角度来看，完全的链上部署和开放的附属物开发标准，使得`Meta Septopus`是个充满无数可能性的开发世界。
-* `Meta Septopus`是一个UGC的系统，而且数字资产真正属于了用户自己。在`Meta Septopus`，只需要花费很少的费用（0.01SOL），就可以拥有一块属于自己`Block`，即可以交易，也可以在`Block`上创建有趣的3D内容，甚至是一个实现盈利的游戏。
-* `Meta Septopus`采用分级管理系统，每个`World`都有自己的`Owner`，他可以通过对参数的设定、对附属物的选择，来构建不一样的世界观，形成风格各异的虚拟世界。
-* `Meta Septopus`的`Adjunct`是对系统进行扩展的主要方式，精简和开放的结构，让开发3D的内容变得简单。`Adjunct`的开发者，可以从用户的使用和`World Owner`的授权使用中获益。
-* `Meta Septopus`自启动之后，即可自主运。新世界的发行，也无需人员干预，这一机制，保证了`Meta Septopus`实现真正的去中心化。自洽的系统，在极端情况下，也能自我恢复，展现了去中心化强大的生命力。
+* **Meta Septopus** is the cornerstone of the Septopus system, serving two purposes: first, to confirm Septopus participants, and second, to act as the main gateway for all Septopus activities.  
+* **Meta Septopus** is designed as a completely decentralized system, featuring groundbreaking design in both its programs and data structure. From a data perspective, the **Meta Septopus** data definition is entirely open and publicly available on-chain. Even without the current parser (Virtual Block World), an identical virtual world can be reconstructed simply by adhering to the protocol. From a programmatic perspective, full on-chain deployment and open Adjunct development standards ensure that **Meta Septopus** is an open development world full of infinite possibilities.  
+* **Meta Septopus** is a UGC (User-Generated Content) system where digital assets truly belong to the users. In **Meta Septopus**, users can own their own **Block** for a minimal fee (0.01 SOL), which can be traded or used to create engaging 3D content, or even a profitable game.  
+* **Meta Septopus** adopts a tiered management system, where each **World** has its own **Owner**. The Owner can establish a unique worldview and create varied virtual environments by setting parameters and selecting authorized Adjuncts.  
+* The **Adjunct** system in **Meta Septopus** is the primary method for extending the platform's functionality. Its streamlined and open structure simplifies 3D content development. **Adjunct** developers can profit from user purchases and licensing fees paid by the **World Owner**.  
+* Once launched, **Meta Septopus** operates autonomously. The issuance of new Worlds requires no human intervention, a mechanism that ensures **Meta Septopus** achieves true decentralization. The self-consistent system can self-recover even in extreme scenarios, showcasing the robust vitality of decentralization.
 
-## 经济模型
+## **Economic Model**
 
-* `Meta Septopus`使用SOL作为交易的数字货币。世界的发行、Block的交易、Adjunct的付费，都使用SOL。
-* `Meta Septopus`发行Token，其独立运行，也验证Septopus管理Project的模型。
-* `Meta Septopus`构建了一个多层次多参与度的虚拟世界，不同的角色都可以在`Meta Septopus`实现盈利，而不仅仅是`Block`的销售。
+* **Meta Septopus** uses **SOL** as the primary digital currency for transactions. World issuance, Block trading, and Adjunct payments are all conducted using SOL.  
+* **Meta Septopus** issues its own Token, which operates independently and verifies the Septopus model for managing Projects.  
+* **Meta Septopus** builds a multi-tiered, multi-participant virtual economy, where various roles can achieve profitability, extending beyond just **Block** sales.
 
-### World机制
+### **World Mechanism**
 
-* `Meta Septopus`是一个自运行的系统，是通过以下的发行方式来实现的
-  1. 总发行的`World`数量为100个，每个世界由4096*4096个`Block`构成，每个`地块`的尺寸为物理世界的16m*16m。
-  2. #0 World由`King`发起拍卖，正式开启自主运行的`Meta Septopus`。确认World Owner后，`Block`就可以进行购买。
-  3. `Block`的默认销售价格为0.01SOL，销售收入由`World Owner`和`Meta Treasure`分成，为5:5。即每销售1个`Block`，`World Owner`得0.005SOL，`Meta Treasure`得0.005SOL。
-  4. 待销售率达到60%时，开启下一个世界的拍卖，同时当前的World Owner可以修改初始销售Block的价格。和Septopus国库分成比例不变，即每销售1个Block，Septopus国库仍得0.005SOL。
-  5. 新World拍卖确认Owner之后，也开始销售，价格为0.01SOL
+* **Meta Septopus** is a self-running system, realized through the following issuance method:  
+  1. The total number of **Worlds** issued is 100, Each world consists of 4096 * 4096 **Blocks**, with each Block measuring 16m * 16m in the physical world equivalent.  
+  2. **World #0** is initiated for auction by the **King**, formally launching the autonomous **Meta Septopus**. Once the **World Owner** is confirmed, **Blocks** become available for purchase.  
+  3. The default selling price for a **Block** is **0.01 SOL**. The sales revenue is split between the **World Owner** and **Meta Treasure** at a 5:5 ratio. Specifically, for every Block sold, the World Owner receives 0.005 SOL, and Meta Treasure receives 0.005 SOL.  
+  4. When the sales rate reaches **60%**, the auction for the next World is triggered. The current World Owner may also modify the initial Block sales price. The revenue split with the Septopus Treasury remains unchanged, meaning the Septopus Treasury still receives 0.005 SOL for every Block sold.  
+  5. After the new World's Owner is confirmed via auction, Block sales for that World also begin at a price of 0.01 SOL.  
+* **Meta Septopus** primarily relies on content to sustain its long-term operation. Both the **World Owner** and the **Block Owner** are participants, creating a rich and varied virtual world through different roles and varied revenue streams.
 
-* `Meta Septopus`主要是通过内容来实现持久运行。无论是`World Owner`还是`Block Owner`，都是参与的一份子，从不同的角度，使用不同的盈利方式来共同创造一个丰富多彩的虚拟世界。
+### **World Auction**
 
-### World拍卖
+* The **World** auction is divided into two phases to ensure a **World Owner** is generated: Phase 1 is a Dutch Auction, and Phase 2 is a Lottery Selection. If Phase 1 fails, the process proceeds to Phase 2.  
+* **Phase 1: Dutch Auction**  
+  1. A 1-week **Auctioneer Preparation** period is initiated. **Auctioneers** stake 10 SOL to join the **Auction Pool**, thereby gaining eligibility to participate and potentially become the **World Owner**.  
+  2. One day after the Auctioneer Preparation phase ends, the auction begins, adopting a Dutch Auction format. The price starts at **1000 SOL** and linearly descends by **0.1 SOL** with each new Solana block, until it reaches **100 SOL**.  
+  3. One day after the auction ends, Auctioneers can redeem their staked 10 SOL.  
+  4. If the auction is successful, the Auctioneer pays the corresponding fee and becomes the official **World Owner**, and the World auction concludes.  
+  5. If the auction fails, a new auction restarts one day later.  
+  6. If three consecutive auctions fail, the process enters Phase 2: Lottery Selection.  
+* **Phase 2: Lottery Selection**  
+  1. A 1-week **Lottery Participant Preparation** period is initiated. **Lottery Participants** pay 1 SOL to join the **Lottery Pool**, gaining the right to be selected as the **World Owner**.  
+  2. One day after the Lottery Participant Preparation phase ends, the **Drawing Block** height is determined based on the number of participants.  
+  3. The block hash of the **Drawing Block** is subjected to **100 million SHA256 computations** to generate the final hash, which determines the winning participant, who becomes the **World Owner**. The World auction then concludes.  
+* After a **World** begins sales, the auction for the next World is triggered when **80%** of its **Blocks** have been sold.
 
-* `World`拍卖，分为2个阶段，保障能生成`World Owner`。第一阶段为荷兰式拍卖，第二阶段为乐透式选取。如第一阶段失败，即进入第二阶段。
+### **World Operation**
 
-* 第一阶段，荷兰式拍卖。
-  1. 开启1周的`拍卖者准备`，`拍卖者`质押 10SOL 来加入`拍卖池`，获取参与拍卖获取`World Owner`的资格。
-  2. `拍卖者准备`阶段结束后1天，开始拍卖，采用荷兰式，价格从 1000SOL 开始，随着 Solana 的区块高度线性下降，每次为 0.1SOL，直到降至100SOL止。
-  3. 拍卖结束1天后，`拍卖者`可以赎回质押的 10SOL。
-  4. 拍卖成功的话，`拍卖者`支付相应的费用，即可成为真正的`World Owner`，世界拍卖结束。
-  5. 如果拍卖失败，1天后，重新启动新的拍卖。
-  6. 如果连续拍卖失败3次，即进入第二阶段的乐透式选取。
+* The **World Owner** can configure on-chain data and set up Adjuncts to manage the presentation of the world, paying fees to the Adjunct developers.  
+* The **World Owner** charges a **3%** transaction fee on **Block** trades, which is paid by the buyer.
 
-* 第二阶段，乐透式选取。  
-  1. 开启1周的`抽奖者准备`，`抽奖人`支付 1SOL 来加入`抽奖池`，获得参与抽奖获取`World Owner`的权利。
-  2. `抽奖者准备`阶段结束后1天，根据`抽奖人`数量来确定`抽奖区块`高度。
-  3. 对`抽奖区块`的区块哈希，进行1亿次的`SHA256`计算，得到最终的哈希，确定中奖者，成为`World Owner`，世界拍卖结束。
+### **Block Operation**
 
-* `World`开始销售之后，80%的`Block`被销售之后，启动下一个`World`的拍卖。
+* **Blocks** are sold via self-determined pricing and involve the transfer of the Block and all its contained content. The sale will incur a transaction fee to the **World Owner**, paid by the buyer.  
+* **Block Owners** can create content on their Block, including paid games, and directly earn revenue.
 
-### World运营
+## **Development Information**
 
-* `World Owner`可以对链上数据进行配置，设置Adjunct，来管理世界的呈现，并支付费用给Adjunct开发者。
-* `World Owner`对Block的交易，收取交易费用，费率为3%。
+* **Contract Network**: [Solana](https://solana.com)  
+* **On-Chain Storage**: IPFS  
+* **Frontend Language**: Javascript  
+* **Rendering Engine**: [three.js](https://threejs.org)
 
-### Block运营
+### **Contract Component**
 
-* `Block`通过自主定价销售，会转移`Block`及其上的所有内容物。销售将支付交易费用给`World Owner`，由购买方支付。
-* `Block`上可以创建内容，也可以是付费游戏，`Block Owner`可以直接赚取收入。
+* The on-chain component of **Meta Septopus**, serving as the foundation and initial exploration for Septopus, adopts a highly loose coupling design to ensure open-source nature. Due to security considerations, including prevention against social engineering attacks, it uses Solana's CPI model with a single program entry point.  
+* **Meta Septopus** introduces the ability to manage content visibility. While guaranteeing users the right to update their content autonomously, the system allows the World Owner to restrict the display of user content from the world's perspective. For example, if User A builds anti-human content on Block [1988, 818] and User B reports it, the **World Owner** can issue a **Ban** on its display.  
+* The data used to construct **Block** content adopts a fully digital approach to enhance security.
 
-## 开发信息
+### **3D Engine**
 
-* 合约网络：[Solana](https://solana.com)
-* 链上储存：IPFS
-* 前端语言：Javascript
-* 渲染引擎：[three.js](https://threejs.org)
+* The **3D Engine** of **Meta Septopus** uses a single entry point, is packaged into an independent file for easy invocation, and can be easily deployed in various applications.  
+* The **3D Engine** execution logic is shown in the figure [Figure showing 3D Engine Execution Logic].
+* The **3D Engine** is composed of the following parts, adopting a loose coupling design:
 
-### 合约部分
+| Category | Function | Components |
+| :---- | :---- | :---- |
+| Framework | Core Parser | [Structure](https://www.google.com/search?q=/docs/world/Framework/system), [World](https://www.google.com/search?q=/docs/world/Framework/world) |
+| Extend | Feature Extension | [Effects](https://www.google.com/search?q=/docs/world/Framework/system) |
+| Renderer | Renderer |  |
+| Controller | Controller |  |
+| Adjunct | Adjuncts/Add-ons |  |
 
-* `Meta Septopus`链上部分，作为`Septopus`的基础和先行探索，采用高度松耦合的设计来保障开源性。同时，由于资产安全性的考虑，包括对社会工程学攻击的预防，采用`Solana`的CPI模式，使用单一程序入口。
-* `Meta Septopus`增加了展示管理的能力，在保障用户自主更新内容的权力下，可以从世界的角度，来对是否展示用户内容进行限制。例如，用户A在Block[1988,818]上构建了一个有反人类特征内容，用户B进行举报后，`World Owner`可以进行`禁止`显示。
-* 构建`Block`内容的数据，采用全数字的方式来提升安全性。
+* Various protocols are used within the **3D Engine** to ensure ease of understanding:
 
-### 3D引擎
+| Protocol Name | Function | Documentation Details |
+| :---- | :---- | :---- |
+| Standard Data | Standard data format used by the 3D Engine |  |
+| Modification Task | Standard format for 3D Engine execution of modification tasks |  |
+| 3D Object | Standard format for creating 3D objects | [3D](https://www.google.com/search?q=/docs/world/Protocol/3D%2520object) |
+| 2D Object | Standard format for creating 2D objects | [2D](https://www.google.com/search?q=/docs/world/Protocol/2D%2520object) |
+| Animation | Standard format for animation effects | [Animation Standard](https://www.google.com/search?q=/docs/world/protocol/animation) |
 
-* `Meta Septopus`的`3D引擎`，使用单一入口，引擎打包成独立的文件，方便调用，可以轻松的部署到各类应用中。
+### **IPFS Component**
 
-* `3D引擎`执行逻辑如图所示
+* The content component of **Meta Septopus** will utilize a large number of 3D models generated by existing software, requiring extensive storage. Based on the principle of decentralization, **IPFS** is used for on-chain storage.  
+* On-chain data adopts the **Septopus Resource Protocol**.
 
-* `3D引擎`由以下几部分构成，采用松耦合的设计。
+### **Data Protocols**
 
-| 分类 | 作用 | 组件 |
-| --- | --- | --- |
-| Framework | 核心解析器 | [Structure](/docs/world/Framework/system)  [World](/docs/world/Framework/world)  |
-| Extend | 功能扩展 | [Effects](/docs/world/Framework/system) |
-| Renderer | 渲染器 |  |
-| Controller | 控制器 |  |
-| Adjunct | 附属物 |  |
+* To ensure the openness and decentralization of **Meta Septopus**, all data protocols are open-source, listed below:
 
-* `3D引擎`内，使用了各种协议来保障其便于理解。
+| Protocol Name | Function | Documentation Details |
+| :---- | :---- | :---- |
+| Septopus Resource Protocol | Content protocol for documents stored on IPFS |  |
+| Avatar Protocol | Virtual world avatar protocol |  |
+| Bag Protocol | Player inventory system protocol |  |
+| Adjunct Protocol | Adjunct development protocol |  |
 
-| 协议名 | 作用 | 文档详情 |
-| --- | --- | --- |
-| Standard Data | 3D引擎使用的标准数据格式 |  |
-| Modificatio Task | 3D引擎执行修改任务的标准格式 |  |
-| 3D Object | 创建3D物体的标准格式 | [3D](/docs/world/Protocol/3D%20object) |
-| 2D Object | 创建2D物体的标准格式 | [2D](/docs/world/Protocol/2D%20object)  |
-| Animation | 动画效果的标准格式 | [动画标准](/docs/world/protocol/animation) |
+## **System Features**
 
-### IFPS部分
+* **Meta Septopus** is deeply integrated with the blockchain, not only leveraging its stable system for asset transactions but also utilizing its rich hash data to build a decentralized **Weather System** and a stable **On-Chain Time System**.
 
-* `Meta Septopus`内容部分，会使用大量现有软件生成的3D模型，就会使用到大量的存储。基于去中心化的原则，采用IPFS进行链上存储。
-* 链上数据采用`Septopus Resource Protocol`。
+### **Weather System**
 
-### 数据协议
+* Blockchain block height naturally serves as a time counter. Based on this, time attributes can be added to the Adjuncts on the Block, which can be used to optimize the final rendering effect or implement time-related calculations.
 
-* 为保障`Meta Septopus`的开放和去中心化，数据协议都进行开源，列表如下：
+### **On-Chain Time System**
 
-| 协议名 | 作用 | 文档详情 |
-| --- | --- | --- |
-| Septopus Resource Protocol | 存储在IPFS的文档内容协议 |  |
-| Avatar Protocol | 虚拟世界形象协议 |  |
-| Bag Protocol |  | 玩家背包系统协议 |
-| Adjunct Protocol | 附属物开发协议 |  |
+* Once ****Meta Septopus** World #0** officially launches, it serves as the starting point for time. The **Meta Septopus** time can then be calculated based on the block height.
 
-## 系统特色
+### **Block Hash Randomness**
 
-* `Meta Septopus`和区块链深度结合，不仅仅借助其稳定的系统实现资产的交易，也使用其丰富的哈希数据，来构建了去中心化的`天气系统`和稳定运行的`链上时间系统`。
-
-### 天气系统
-
-* 区块链的区块高度，天生可以用作时间计数器，基于此，可以将Block上的附属物都添加上时间属性，可以用于优化最终渲染效果，或者实现和时间关联的计算。
-  
-### 链上时间系统
-
-* 当`Meta Septopus`的`0号世界`正式启动之后，可以作为时间的起点，然后根据区块高度，就可以计算`Meta Septopus`的时间。
-
-### 区块哈希随机
-
-* 结合**链上时间**，可以使用关联的区块哈希作为随机数，实现有趣的功能。例如，当在Septopus World里种植一棵“树”的时候，由于不同的种植时间和不同的区块哈希，两颗相同的种子将长成两棵相似却不一样的两棵树，就像现实世界中发生的那样。
+* Combined with **On-Chain Time**, the associated block hash can be used as a random number to enable interesting features. For instance, when planting a "tree" in the Septopus World, due to the different planting times and associated block hashes, two identical seeds will grow into two similar but unique trees, much like what happens in the real world.

@@ -1,75 +1,75 @@
 # System Overview
 
-* The `Septopus Engine`'s role is to transform the Meta Septopus data on the blockchain into a 3D world. The Septopus engine can be thought of as a parser for on-chain data, implementing the Meta Septopus protocol and enabling interaction within a 3D virtual environment.
-
-* The `Septopus Engine` is developed in **Javascript** and uses [three.js](https://threejs.org) for its rendering engine. It is released as open source and can be found on Github at [https://github.com/septopus-rex/world](https://github.com/septopus-rex/world).
-
-* The `Septopus Engine` can be divided into two parts: the core system for building a first-person 3D environment, and the **adjuncts** for expanding its functionality.
+* `Septopus引擎`的作用，是将链上`Meta Septopus`的数据，构建出一个3D世界。`Septopus引擎`可以看成是一个链上数据的解析器，实现了`Meta Septopus`协议，可以在3D虚拟环境里，进行交互。
   
-## Basic Definition
+* `Septopus引擎`采用`Javascript`作为开发语言，渲染引擎使用[three.js](https://threejs.org)。采用开源方式进行发布，Github地址为[https://github.com/septopus-rex/world](https://github.com/septopus-rex/world)。
 
-* The Septopus Coordinate System is shown in the figure below. The X and Y axes are the horizontal plane where the player stands, and the Z axis is the direction of the sky. This is different from the default coordinate system of three.js.
+* `Septopus引擎`可以分为两部分，一是构建第一人称的3D环境的**核心系统**，二是为扩展功能的**附属物**。
 
-|  Septopus Coordinate System   | Three.js Coordinate System  |
+## 基础定义
+
+* `Septopus坐标系`如下图所示，XY轴为`玩家`水平站立平面，Z轴为天空的方向。不同于`three.js`的默认坐标系。
+
+|  Septopus坐标系   | Three.js坐标系  |
 |  ----  | ----  |
-| ![Septopus Coordinate System](../../image/ax.septopus.svg)  | ![Three.js Coordinate System](../../image/ax.three.js.svg) |
+| ![Septopus坐标系](/img/docs/ax.septopus.svg)  | ![Three.js坐标系](/img/docs/ax.three.js.svg) |
 
-* When drawing in 2D, the Septopus coordinate system uses the lower left corner as the origin and is counterclockwise, which is different from the browser page which uses the upper left corner as the origin and is clockwise.
+* `Septopus坐标系`在2D绘制时，采用的是**左下角**为原点的，逆时针方向，不同于浏览器的页面使用**左上角**为原点，是顺时针方向。
 
-* The default input unit for the `Septopus Engine` is meters (m). The system converts units by setting a conversion factor. The `Septopus Engine` displays units in millimeters (mm), and the system's conversion factor is 1000.
+* `Septopus引擎`的默认输入值单位为`米(m)`，系统通过设置转换率来做单位转换。`Septopus引擎`显示的单位为`毫米(mm)`，系统的转换率就是1000。
   
 ---
 
-* The `Septopus Engine` provides a single program that supports the following operating modes for different purposes. This allows different types of players to play in the same 3D environment, lowering the user's cognitive threshold.
+* `Septopus引擎`提供单一程序，支持以下运行模式，用于不同的用途。这样，各种不同类型的玩家可以在同一个3D环境，降低用户的认知门槛。
 
-|  Mode   | Main Function  | Implementation |
+|  模式   | 主要作用  | 实现方式 |
 |  ----  | ----  | ----  |
-| Ghost  | Non-registered user mode, you can browse but not interact. | The main operating mode of meta septopus, you can walk around freely.  |
-| Normal  | Registered user mode, you can use avatar. | The main operating mode of meta septopus, you can walk around freely.  |
-| Edit  | The mode for editing block data can be only single one.  |  Separate the editing data and process it separately as task. |
-| Game  | Pre-render all involved blocks, trigger is support. | Block datasource access and can only interact with the game server. |
+| 鬼魂模式  | 非注册用户的模式，可以游荡，但不能互动 | 引擎主要运行方式，可以闲逛  |
+| 正常浏览  | 注册用户的模式，可以使用`形象` | 引擎主要运行方式，可以闲逛  |
+| 编辑模式  | 对`地块`数据进行编辑的模式，只能对单一地块进行编辑 |  独立出编辑部分的数据，单独处理 |
+| 游戏模式  | 预渲染所有涉及的地块，能触发`机关`， | 阻断数据访问，只能和游戏服务器交互 |
 
 ---
 
-* The `Septopus Engine` data structure design uses a variety of intermediate state standards, such as component data and input components. This allows it to adapt to different network storage and different rendering front-ends, improving the engine's compatibility. Data conversion is identified by shorthand notations. For example, the raw_std method in the appendix converts the raw data of the data source into standard data at runtime.
+* `Septopus引擎`数据结构设计部分，采用多种`中间态标准`,例如组件数据、输入组件等。这样可以适应不同的网络存储及不同的渲染前端，提高引擎的兼容性。通过`简记符`来标识数据间的转换，例如，附属物里的`raw_std`方法，是将数据源`原始数据`转换成运行时里的`标准数据`。
 
-|  Data Name   | Main Function  | Save Location  | Abbreviated notation  |
+|  数据名称   | 主要作用  | 保存位置  | 简记符  |
 |  ----  | ----  | ----  | ----  |
-| Raw Data  | Streamlined, compressed data consisting of pure numbers | on-chain data from datasource | `raw` |
-| Standard Data  | Convert from raw data and serves as the basis for conversion into other data. | Runtime  | `std` |
-| Renderer Data  | Data converted from standard data and used for display rendering | Runtime  | `3d`,`2d`,`active` |
-| Animation Data  | Implement common animation effects for different components, such as moving, scaling, deformation, etc. |  Runtime  | - |
-| UI Data  | Data for the UI system to generate user operations. |  Adjuncts  | - |
+| 原始数据  | 精简的压缩数据，由纯数字构成 | 链上，由`数据源(datasource)`提供  | `raw` |
+| 标准数据  | 由`原始数据`根据定义转换来的，作为转换成其他数据的基础 | 运行时  | `std` |
+| 渲染数据  | 由`标准数据`转换的，应用于显示渲染的数据 | 运行时  | `3d`,`2d`,`active` |
+| 动画数据  | 实现不同组件的通用动画效果，如移动、缩放、变形等 |  运行时  | - |
+| UI数据  | 供UI系统生成用户操作的数据 |  附属物组件  | - |
 
 ---
 
-* The `Septopus Engine` uses block to locate adjuncts. This creates two types of positioning: block coordinates (A coordinate system) and world coordinates (B coordinate system). Furthermore, the renderer output uses screen coordinates (C coordinate system). The data conversion between these three types of coordinates is implemented in different components.
+* `Septopus引擎`采用地块来定位所有的`附属物`，就存在`地块坐标(A坐标系)`和`世界坐标(B坐标系)`这两种定位，同时，在渲染器结果里又存在`屏幕坐标(C坐标系)`。这三者之间的数据转换，放在了不同的组件里分别实现。
 
-|  Coordinate System   | Main Function  |  Abbreviated notation  |
+|  坐标系名称   | 主要作用  |  简记符  |
 |  ----  | ----  | ----  |
-|  Block  | Compress data to make it easier to understand and copy and reuse. | `A`  |
-|  World  | Splice block data, realize dynamic loading. | `B` |
-|  Screen  | Used for display, accepting screen input. | `C` |
+|  地块坐标  | 压缩数据，便于理解；便于拷贝，重复使用；| `A`  |
+|  世界坐标  | 拼接地块数据；实现动态加载； | `B` |
+|  屏幕坐标  | 用于显示；接受屏幕的输入； | `C` |
 
 ---
 
-* The `Septopus Engine` leverages the unique characteristics of blockchain technology, calculating Septopus's independent time based on block height and adjusting Septopus's weather status based on block hashes. This allows data to have a time-based, presentable attribute. In the future, 3D objects can also be aged based on time. Alternatively, the sky can be displayed based on time and weather, achieving deep integration with blockchain data.
+* `Septopus引擎`深度利用区块链的特性，根据区块高度来计算Septopus的独立`时间`，根据区块哈希来调整Septopus的`天气状态`。从而让数据具有可呈现的时间属性。未来，对3D物体，还可以根据时间进行显旧处理。或者，`天空`根据`时间`和`天气`来显示，和区块链数据实现深度绑定
 
-|  Name   | Main Function  |  Related Blockchain  | Scope  |
+|  特性名称   | 主要作用  |  区块链部分  | 适用范围  |
 |  ----  | ----  | ----  | ----  |
-| time  | Septopus's time system is defined by the general configuration | block height  | Player (age, etc.),Adjuncts (natural growth, etc.) |
-| weather  | Septopus's weather system is defined by the general configuration | block hash  | Players (movement capacity, etc.), accessories (rendering effects, etc.) |
+| 时间  | Septopus的时间体系，由`通用配置`定义 | 区块高度  | 玩家（年纪等）；附属物（自然生长等）； |
+| 天气  | Septopus的天气体系，由`通用配置`定义 | 区块哈希  | 玩家（运动能力等）；附属物（渲染效果等）； |
 
 ---
 
-* The Septopus engine supports multiple blockchain networks, with contracts relying on external support and unrestricted by network constraints. The initial version was deployed on the Solana network, leveraging its convenient on-chain data storage and high-speed response times.
+* `Septopus引擎`支持多种区块链网络，合约部分依靠外部引入进行支持，不受网络限制。初期版本部署在Solana网络，依赖其便利的链上数据存储和高速响应。
 
-* The singleton mode is used for development, suitable for rendering in a single viewport, which is more suitable for Meta Septopus application scenarios and helps optimize performance. However, the problem is that when displaying Septopus content in multiple windows, the development complexity is relatively high.
+* 采用`单例模式`进行开发，适用于单一视口渲染，更符合`Meta Septopus`的应用场景，有利于优化性能。带来的问题是在多窗口显示Septopus内容时，开发复杂度较高。
 
-## **Program Structure**
+## 程序结构
 
-* The Septopus engine only needs to provide a DOM container to start the entire Meta Septopus system.
-  
+* `Septopus引擎`仅需提供一个DOM容器,可以启动整个`Meta Septopus`系统。
+
     ```Javascript
         import Engine from `septopus`;
 
@@ -81,21 +81,21 @@
         });
     ```
 
-* The Septopus engine consists of the following components. Each component functions independently, creating a loosely coupled state. Major functional extensions come from dependencies. The framework is designed to provide a highly loosely coupled environment to facilitate adjunct development.
+* `Septopus引擎`，主要由以下几个部分构成。各部分功能独立，是一种松耦合的状态。主要的功能扩展来自于`附属物`,框架设计目的是提供一个高度松耦合的环境，便于`Adjunct`的开发。
 
-|  Component   | Main Function  | File Location  |
+|  组成部分   | 主要作用  | 文件位置  |
 |  ----  | ----  | ----  |
-| adjunct | 3D/2D data construction,data editing function,IO UI output,trigger tasks | `./adjunct/` |
-| frame  | Block management, world management, components organization and management |  `./core/framework.js` |
-| core  | 世界启动及管理；时间控制；气候控制；天空管理；玩家控制；玩家管理； |  `./core/` |
-| renderer  | 3D渲染；2D渲染 |  `./render/` |
-| controller  | 3D控制(手机端，PC端)；2D控制(手机端，PC端) | `./control/` |
-| IO  | 基础UI；区块链网络连接； | `./io/` |
-| lib  | 通用功能库；数据转换功能； | `./lib/`,`./three/` |
-| animation  | 通用的动画效果实现 | `./effects/` |
-| plugin  | 扩展功能； |`./plugin/` |
+| **附属物**  | 3D/2D数据构建；数据编辑功能；IO的UI输出； | `./adjunct/` |
+| 框架部分  | `地块`数据管理；`世界`数据管理；引擎组件组织和管理； |  `./core/framework.js` |
+| 基础功能  | 世界启动及管理；时间控制；气候控制；天空管理；玩家控制；玩家管理； |  `./core/` |
+| 渲染器  | 3D渲染；2D渲染 |  `./render/` |
+| 控制器  | 3D控制(手机端，PC端)；2D控制(手机端，PC端) | `./control/` |
+| 输入输出  | 基础UI；区块链网络连接； | `./io/` |
+| 基础库  | 通用功能库；数据转换功能； | `./lib/`,`./three/` |
+| 动画效果  | 通用的动画效果实现 | `./effects/` |
+| 插件  | 扩展功能； |`./plugin/` |
 
-* Because 3D operations involve performance bottlenecks, the Septopus engine uses frame-synchronized computing to synchronize the data and functions being processed with frame updates, reducing latency and ensuring smooth 3D operation. For example, when a resource needs to be loaded from the network, the data is persisted, with a network request made once per frame. If a data request is successful, the parsing of a single resource is also processed within each frame.
+* 由于涉及存在性能瓶颈的3D运算，`Septopus引擎`使用帧同步计算方式，将需要处理的数据和功能，和帧更新同步，减少等待的卡顿，保障3D运行的流畅。例如，需要网络加载资源时，会保持数据，每帧进行一次网络请求。数据请求成功，也是在每帧处理一个资源的解析。
 
 ### 框架部分
 
