@@ -134,6 +134,19 @@ export default adjunct;
 * 动画的入口在`hook.animate(meshes,cfg)`。
 * `附属物`可以使用系统内置的[基础动画](./animation.md)来实现动画效果，也可以组合`基础动画`实现更复杂的动画。
 * `附属物`也可以自定义`动画方法`来操作`meshes`，从而实现3D场景里的特殊动画效果。
+
+## 任务支持
+
+* `Task`是供`Trigger`调用的方法，采用以下的结构来组织。在`Trigger`里设置调用方法的时候，使用index来指向。
+
+```Javascript
+    {
+        task_b:(target,cfg)=>{},
+        task_c:(target,cfg)=>{},
+        task_a:(target,cfg)=>{},
+        router:["task_a","task_b","task_c"],
+    }
+```
   
 ## 可控模式
 
@@ -149,3 +162,41 @@ export default adjunct;
 |  3D模型  | 显示其他3D软件生成的模型  | IPFS  | `STD_ROW.module`  |
 
 * 为了防止大量数据解析形成卡顿，资源的加载采用`分帧处理`的方式，详情请见[分帧处理](./framework.md#分帧处理)说明。
+
+## 定义部分
+
+* `Adjunct`采用的通用定义，需要公布到链上。
+  
+  ```Javascript
+    {
+        "INDEX_OF_SIZE": 0,
+        "SIZE_X": 0,
+        "SIZE_Y": 1,
+        "SIZE_Z": 2,
+        "INDEX_OF_POSITION": 1,
+        "POSITION_X": 0,
+        "POSITION_Y": 1,
+        "POSITION_Z": 2,
+        "INDEX_OF_ROTATION": 2,
+        "ROTATION_X": 0,
+        "ROTATION_Y": 1,
+        "ROTATION_Z": 2,
+        "FACE_TOP":0,
+        "FACE_BOTTOM":1,
+        "FACE_FRONT":2,                 //from south to north
+        "FACE_BACK":3,
+        "FACE_LEFT":4,
+        "FACE_RIGTH":5,
+        "MODE_NORMAL":1,                //login player
+        "MODE_EDIT":2,                  //edit mode on your own block
+        "MODE_GAME":3,                  //preload all block data
+        "MODE_GHOST":4,                 //anonymous player, no trig
+        "INDEX_OF_RAW_ON_CHAIN_DATA":1, //block raw data index on chain
+        "VERSION_DEFAULT":2025,         //default version
+        "EFFECTS_MOVING":0,         //effects.moving
+        "EFFECTS_ROTATE":1,         //effects.rotate
+        "EFFECTS_SCALE":2,          //effects.scale
+        "EFFECTS_TEXTURE":3,        //effects.texture
+        "EFFECTS_CUSTOMIZE":4,        //effects.customize, by adjunct,
+    }
+  ```
