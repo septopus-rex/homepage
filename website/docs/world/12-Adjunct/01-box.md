@@ -2,19 +2,22 @@
 
 * 代码位置:[/adjunct/basic_box.js](https://github.com/septopus-rex/world/blob/main/engine/src/septopus/adjunct/basic_box.js)
 
-* `盒子`是3D里最常见的组件，其也是`附属物`的一种，基本情况参照[附属物详情](./adjunct.md)。
-* `盒子`还可以作为`附属物`开发的参考，理解`附属物`在Septopus中的运行机制。
+* `Box`组件，是创建一个立方体的，是一个很基础的`Adjunct`。
+* `Box`可以看成是一个最简单的组件，通过设置尺寸、位置和旋转，就可以在3D环境里生成一个盒子。通过设置贴图、动画效果，可以构建出有趣的内容。
 
 ## 数据定义
 
-* `盒子`的数据结构，定义如下：
+* `Box`的数据结构，定义如下：
   
     ```Javascript
         [
-            [],
-            [],
-            [],
-
+            [ 4,  4, 0.2 ],         //box的尺寸
+            [ 14, 14, 0.1 ],        //box在block里的定位
+            [ 0, 0, 0 ],            //box的旋转值
+            3,                      //texture的ID
+            [ 1, 1 ],               //texture的贴图repeat参数
+            0,                      //动画效果
+            1                       //是否有stop属性，阻止玩家进入
         ]
     ```
 

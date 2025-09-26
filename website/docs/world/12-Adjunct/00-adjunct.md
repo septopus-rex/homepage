@@ -12,6 +12,16 @@
 
 * `附属物`的代码样例如下，保持清晰的结构，便于理解和开发。
 
+|  功能划分   | 功能说明  | 挂载位置  |
+|  ----  | ----  | ----  |
+| 钩子 |  注册组件；动画入口； | `ADJUNCT.hook` |
+| 定义及常量 |  组件的配置；组件的常量； |  |
+| 动画实现 | 独立定义的动画方式；动画的数据处理； | `ADJUNCT.hook.animate()` |
+| 数据转换 | 不同标准数据的转换； | `ADJUNCT.transform` |
+| 数据增删改查 | 对`raw`数据进行的修改； | `ADJUNCT.attribute` |
+| IO菜单 |  输出标准的IO菜单；输入数据验证； |  `ADJUNCT.menu`|
+| 机关触发 |  机关触发后可以调用的方法； |  `ADJUNCT.task`|
+
 ```Javascript
     const self={
         hooks:{
