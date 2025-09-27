@@ -1,102 +1,66 @@
 # Trigger, spark of life
 
-* 触发器，是`Septopus引擎`实现游戏的核心机制。`Trigger`在游戏模式下触发，可以实现各种复杂的游戏逻辑。`Trigger`是个独立的组件，和`Adjunct`一样，需要被放置到`Block`上。
+* `Trigger` is the core mechanism used by the `Septopus Engine` to implement games. Trigger is triggered in game mode and can implement complex game logic. Trigger is independent components that, like Adjuncts, must be placed on a `Block`.
 
-* `Septopus引擎`将`trigger`单独提取出来，在游戏模式下，每当`Player`的位置发生变化时，就进行计算来判断是否触发。
+* The Septopus engine extracts the trigger separately. In game mode, whenever the position of the player changes, a calculation is performed to determine whether it is triggered.
 
-* 在`编辑模式`下，`trigger`也是有效的，可以方便`Player`来布置场景，检测效果是否符合预期。
+* In `Edit Mode`, `trigger` is also valid, which can facilitate `Player` to arrange the scene and test whether the effect meets the expectations.
 
-## 触发器定义
+## Trigger Definition
 
-* `Trigger`是可以穿透的，只有在`编辑模式`下会显现出来，在`正常模式`和`游戏模式`下，是不可见的，但是不影响其触发。
+* `Trigger` is transparent and only visible in `Edit Mode`. In `Normal Mode` and `Game Mode`, it is invisible, but it does not affect its triggering.
+
+* `Trigger` has 4 trigger events, namely [in, out, hold, touch], which meet the development needs in game mode.
+
+## Trigger Task
+
+* `Trigger` can call all `task` preset by the system, so that it can almost adjust the functions of this system and support rich expressions in game mode.
+
+### System Task
+
+* The optional types of the system task are ["UI","time","weather","sky"].
+
+```Javascript
+    [ 
+        0,          //Main type, one of the values ​​[system, adjunct, player, bag...]
+        0,          //System task, [UI, weather, sky...] one of the values
+        3,          //Select the property setting, after this, the chain selection property
+    ]
+```
+
+### Adjunct Task
+
+* Adjuncts are various extensible objects deployed on the Block, which enable interaction by modifying corresponding properties.
+
+* The optional type of the adjunct, which is processed according to the actual setting of the world.
+
+```Javascript
+    [ 
+        1,          //Main type, one of the values ​​[system, adjunct, player, bag...]
+        0x00a1,     //Adjunct index
+        0,          //task index         
+    ]
+```
+
+### Player Task
+
+* Player's selectable attributes ["position","rotation","body","block","movement","health","mana"].
+
+```Javascript
+    [ 
+        2,          //Main type, one of the values ​​[system, adjunct, player, bag...]
+        1,          //The index of the player's optional attribute        
+    ]
+```
+
+## Workflow
+
+* Triggers use the following operating logic: **Trigger event** --> **Judgment condition** --> **Execution action** --> **Exit condition** --> **Resume action**
+
+* Use the definitions of **property and object selection** and **judgment method** mentioned above to implement **condition** judgment.
   
-* `Trigger`有4种触发事件，分别是[in,out,hold,touch]，满足游戏模式下开发的需求。
+* Use the definitions of **property and object selection** and **modification methods** mentioned above to implement **action** execution.
 
-## 调用方式
+## Issue
 
-* `Trigger`可以调用系统预设的所有`task`，从而几乎能实现对这个系统功能的调整，支持游戏模式下的丰富表达。
-
-### 系统环境
-
-* 系统环境的可选类型为["UI","时间","天气","天空"]。
-
-```Javascript
-    [ 
-        0,          //主类型，[系统，附属物,玩家，背包...]其中的一个值
-        0,          //系统可支配系统，[UI，天气，天空...]其中的一个值
-        3,          //选中属性设置,这个之后，就是链式选中属性
-    ]
-```
-
-### 附属物
-
-* 附属物是在Block上部署的各种可扩展的物件，通过修改对应的属性来实现互动。
-* 附属物的可选类型，根据world的实际加载情况进行处理。
-* 附属物的选择，包括plugin，因其为自定义的附属物，操作逻辑一致。
-
-```Javascript
-    [ 
-        1,          //主类型，[系统，附属物,玩家，背包...]其中的一个值
-        0x00a1,     //附属物的short编号
-        0,          //附属物的index，其中的一个附属物选中
-        1,          //附属物属性设置选中,这个之后，就是链式选中属性
-        2           
-    ]
-```
-
-### 玩家
-
-* 玩家的可选择属性 ["位置","旋转","身体","区块","运动能力","血量","魔法量"]
-
-```Javascript
-    [ 
-        2,          //主类型，[系统，附属物,玩家，背包...]其中的一个值
-        1,          //玩家可选属性的编号
-        1,          //玩家属性设置选中,这个之后，就是链式选中属性
-        2           
-    ]
-```
-
-### 背包
-
-* 背包内可选择属性 ["种类","数量"]。
-
-```Javascript
-    [ 
-        3,          //主类型，[系统，附属物,玩家，背包...]其中的一个值
-        1,          //玩家属性设置选中,这个之后，就是链式选中属性     
-    ]
-```
-
-## 工作流程
-
-* 触发器使用这样的运行逻辑：**触发器事件** -->  **判断条件** --> **执行动作** --> **退出条件** --> **恢复动作**
-* 使用上面提到的**属性及对象选择**和**判断方式**的定义，来实现**条件**的判断
-* 使用上面提到的**属性及对象选择**和**修改方式**的定义，来实现**动作**的执行
-
-### 判断条件
-
-* 基础的数据结构为 ["对象属性","判断方式","目标值","触发执行"]。
-* 判断条件为数组结构，所有条件为true，才执行下一步动作
-* 当设置**触发执行**时，只要该条件为true,就开始**执行动作**。
-
-### 执行动作
-
-* 基础的数据结构为 ["对象属性","修改方式","目标值"]。
-
-### 退出动作
-
-* 基础的数据结构为 ["对象属性","判断方式","目标值","触发退出"]。
-* 退出条件为数组结构，所有条件满足为true，执行**恢复动作**。
-* 当设置**触发退出**时，只要该条件为true,执行**恢复动作**。
-
-### 恢复动作
-
-* 基础的数据结构为 ["对象属性","目标值"]。如不设置**目标值**，即将**对象**恢复到触发前的状态。
-* 如果不设置恢复动作，则将**对象**保持在现有状态
-
-## 异常情况
-
-* `Trigger`存在**穿透**的情况，发生的原理是，当`玩家`运动速度过快时，前一个位置和后一个位置的差值大于了`Trigger`的尺寸，`Player`就会像穿墙一样，直接穿透。为避免这样的情况发生，需要给`Trigger`设置足够的厚度，来保障被触发。
-  
-* 当`Trigger`堆叠的时候，会触发多种事件，此时存在执行顺序的问题，变得不可控，需要进行主动规避。
+* The Trigger mission system is a complex system and is not yet fully finalized.

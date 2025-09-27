@@ -1,6 +1,6 @@
 # Effects
 
-* 代码位置:[/effects/entry.js](https://github.com/septopus-rex/world/blob/main/engine/src/septopus/effects/entry.js)
+* Code location: [/effects/entry.js](https://github.com/septopus-rex/world/blob/main/engine/src/septopus/effects/entry.js)
 
 * `Septopus 引擎`提供很多基础特效，例如位移、旋转、缩放等，降低`附属物`开发中动画部分的代码量，也降低了动画部分开发的难度。
 

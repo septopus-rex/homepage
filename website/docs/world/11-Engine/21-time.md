@@ -1,6 +1,6 @@
 # Time System
 
-* 代码位置:[/core/time.js](https://github.com/septopus-rex/world/blob/main/engine/src/septopus/core/time.js)
+* Code location: [/core/time.js](https://github.com/septopus-rex/world/blob/main/engine/src/septopus/core/time.js)
 
 * `Meta Septopus`使用区块高度来计算系统时间，是现实世界速度的约20倍，相当于现实时间的1年，在`Meta Septopus`里被计算为20年。
 

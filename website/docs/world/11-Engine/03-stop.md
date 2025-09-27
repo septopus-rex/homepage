@@ -1,28 +1,28 @@
 # Stop, catalyst for action
 
-* 阻拦体，是`Septopus引擎`实现限制`Player`运动的系统机制。可以通过单独设置`Stop`附属物来实现，也可以设置`附属物`的stop属性来实现。
+* `Stop` is the Septopus Engine's mechanism for limiting the Player's movement. This can be achieved by setting a Stop adjunct, or by setting the adjunct's stop property.
 
-* `Septopus引擎`将`stop`单独提取出来，每当`Player`的位置发生变化时，就进行计算来判断是否可以正常运动。
+* The Septopus engine extracts the stop function separately and performs calculations every time the position of the player changes to determine whether it can move normally.
 
-* 在`编辑模式`下，阻拦体也是有效的，可以方便`Player`来布置场景。
+* In `Edit Mode`, the blocking body is also valid, which can facilitate the `Player` to arrange the scene.
 
-## 阻拦定义
+## Stop Definition
 
-* 从`Player`的脚底开始计算，当`Stop`高度在`Player`跨越的能力范围时，就将`玩家`的站高设置到`阻拦体`的上部顶面。对于球形的阻拦体，按照站立在球面的方式进行计算。
+* Starting from the bottom of the Player's feet, if the Stop height is within the Player's reach, the Player's standing height is set to the top of the Obstacle. For spherical Obstacles, the calculation is performed as if they were standing on the sphere.
   
-* `Stop`可以在`Player`的头部,阻挡向上的运动。相邻`Block`的`Stop`也n能够阻拦`Player`的运动。
+* `Stop` can block the upward movement of the `Player` head. `Stop` in adjacent `Block` can also block the movement of the `Player`.
 
-## 阻拦体类型
+## Stop Types
 
-* 为了适应不同的地形，阻拦体提供了不同类型来进行处理。
+* In order to adapt to different terrains, different types of barriers are provided for processing.
 
-|  阻拦体类型   | 主要用途  |
+|  Type of Stop   | Main Features  |
 |  ----  | ----  |
-|  盒子  | 方盒形状的阻拦体，用于阻挡和抬升玩家站立高度  |
-|  球形  | 主要用来处理复杂地形，例如颠簸路面  |
+|  Box  | A box-shaped barrier used to block and raise the player's standing height  |
+|  Ball  | Mainly used to handle complex terrain, such as bumpy roads  |
 
-## 异常情况
+## Abnormal Situation
 
-* `阻拦体`存在**穿透**的情况，发生的原理是，当`玩家`运动速度过快时，前一个位置和后一个位置的差值大于了`阻拦体`的尺寸，`玩家`就会像穿墙一样，直接穿透。为避免这样的情况发生，需要给`阻拦体`设置足够的厚度，推荐不小于0.2米。在游戏模式中，如果玩家的运动能力得到加强，需要进一步的加厚。
+* Blockers can sometimes "penetrate" the player. This happens when the player's movement speed is too fast, and the difference between their previous and next positions is greater than the `Stop`'s dimensions, causing the player to pass through the `Stop`, like a wall. To prevent this, set the `Stop` to a sufficient thickness, recommended to be at least 0.2 meters. If the player's movement abilities are enhanced during gameplay, further thickness may be required.
 
-* `阻拦体`存在**囚禁**的情况，发生的原理是，当`玩家`所在`地块`发生了数据更新，其站立的位置被设置了一个`阻拦体`，玩家就会出现无法动弹的情况。这需要`玩家`进行操作，直接跳转到其他`地块`来解决这个问题。当`玩家`跳入一个地块时，系统会处理站立位置，不会发生**囚禁**的情况。
+* `Stop` can cause imprisonment. This occurs when a player's current tile is updated and a `Stop` is placed where they are standing, preventing them from moving. This requires the player to jump directly to a different block to resolve the issue. When a player jumps into a block, the system automatically calculate their position, preventing imprisonment.

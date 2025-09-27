@@ -1,6 +1,6 @@
 # Weather System
 
-* 代码位置:[/core/weather.js](https://github.com/septopus-rex/world/blob/main/engine/src/septopus/core/weather.js)
+* Code location: [/core/weather.js](https://github.com/septopus-rex/world/blob/main/engine/src/septopus/core/weather.js)
 
 * `引擎`根据区块的哈希，来计算出不同的天气状况。
 * 通过task，进入游戏模式后，可以对天空状况进行设置。

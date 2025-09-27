@@ -1,6 +1,6 @@
 # Player
 
-* 代码位置:[/core/player.js](https://github.com/septopus-rex/world/blob/main/engine/src/septopus/core/player.js),[/core/movment.js](https://github.com/septopus-rex/world/blob/main/engine/src/septopus/core/movment.js)
+* Code location: [/core/player.js](https://github.com/septopus-rex/world/blob/main/engine/src/septopus/core/player.js),[/core/movment.js](https://github.com/septopus-rex/world/blob/main/engine/src/septopus/core/movment.js)
 
 ## 运动方式
 

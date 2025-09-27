@@ -1,6 +1,6 @@
 # Trigger
 
-* 代码位置:[/adjunct/basic_trigger.js](https://github.com/septopus-rex/world/blob/main/engine/src/septopus/adjunct/basic_trigger.js)
+* Code location: [/adjunct/basic_trigger.js](https://github.com/septopus-rex/world/blob/main/engine/src/septopus/adjunct/basic_trigger.js)
 
 * `Trigger`组件是放置一个可以触发的组件，仅运行在`游戏模式`。
 

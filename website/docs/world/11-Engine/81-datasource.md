@@ -1,6 +1,6 @@
 # Datasource
 
-* 代码位置:[/io/api.js](https://github.com/septopus-rex/world/blob/main/engine/src/septopus/io/api.js)
+* Code location: [/io/api.js](https://github.com/septopus-rex/world/blob/main/engine/src/septopus/io/api.js)
 
 * `Datasource`主要提供了以下的功能。
 

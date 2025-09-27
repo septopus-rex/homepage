@@ -1,6 +1,6 @@
 # Box
 
-* 代码位置:[/adjunct/basic_box.js](https://github.com/septopus-rex/world/blob/main/engine/src/septopus/adjunct/basic_box.js)
+* Code location: [/adjunct/basic_box.js](https://github.com/septopus-rex/world/blob/main/engine/src/septopus/adjunct/basic_box.js)
 
 * `Box`组件，是创建一个立方体的，是一个很基础的`Adjunct`。
 * `Box`可以看成是一个最简单的组件，通过设置尺寸、位置和旋转，就可以在3D环境里生成一个盒子。通过设置贴图、动画效果，可以构建出有趣的内容。

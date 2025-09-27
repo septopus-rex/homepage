@@ -1,6 +1,6 @@
 # Module
 
-* 代码位置:[/adjunct/basic_module.js](https://github.com/septopus-rex/world/blob/main/engine/src/septopus/adjunct/basic_module.js)
+* Code location: [/adjunct/basic_module.js](https://github.com/septopus-rex/world/blob/main/engine/src/septopus/adjunct/basic_module.js)
   
 * `Module`的主要作用，是导入外部软件创建的3D模型。得益于three.js强大，`Module`支持多种软件导出的格式。
 * `Module`可以看成是一个容器，将外部软件创建的3D模型定位到`World`里，这样，就能构建丰富的内容。

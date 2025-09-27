@@ -1,50 +1,50 @@
 # Block, bedrock of world
 
-* 代码位置:[/core/block.js](https://github.com/septopus-rex/world/blob/main/engine/src/septopus/core/world.js)
+* Code location: [/core/block.js](https://github.com/septopus-rex/world/blob/main/engine/src/septopus/core/world.js)
 
-* `Block`是Septopus的基础数据单元，通过将一个个的`Block`进行拼接，就构成了完整的Septopus的`World`。每个`Block`的尺寸为物理世界的16m*16m。
-  
-* `Engine`使用动态加载的方式，只加载`Player`所在区域的`Block`，极大的降低了数据的加载量。
+* `Block` is the basic data unit of Meta Septopus. By connecting blocks together, a complete Septopus World is constructed. Each block is 16m*16m in size as the physical world.
 
-* `Block`与`Adjunct`功能基本一致，但又不是`Adjunct`，它是`Adjunct`定位的基础，需要实现更多的功能。
-  
-## 功能说明
+* The Septopus Engine uses dynamic loading to load the blocks in the area where the Player is located only, which greatly reduces the amount of data loaded.
 
-* `Block`主要实现以下功能
+* Block has basically the same functions as Adjunct, but it is not Adjunct. It is the basis of Adjunct positioning and needs to implement more functions.
+
+## Functional Description
+
+* `Block` mainly implements the following functions
   
-    | 方法名 | 作用 | 示例 |
+    | Method | Function | Sample |
     | --- | --- | --- |
-    | hooks | 引擎默认调用的勾子 |  `reg`,`init` |
-    | transform | 对数据进行转换操作的方法 |   |
-    | attribute | 数据编辑的实现，对属性进行修改 |   |
-    | menu | 编辑操作时的前端显示 |   |
-    | task | 机关触发的任务 |   |
+    | hooks | The hook called by the engine by default |  `reg`,`init` |
+    | transform | Methods for performing data conversion operations |   |
+    | attribute | Implementation of data editing to modify attributes |   |
+    | menu | Front-end display during editing operations |   |
+    | task | Missions triggered by the mechanism |   |
 
-## 数据定义
+## Block Definition
 
-* `Block`只有唯一的所有者，通过链上的数据进行确认。这也是认定`Septopus参与者`的方法，通过拥有`Block`来参与`Septopus`的互动。
+* A Block has only one owner, confirmed by on-chain data. This is also how Septopus participants are identified, and they participate in Septopus interactions by owning a Block.
   
-* `Block`的数据定义如下：
+* The data definition of `Block` is as follows:
   
     ```Javascript
         [
             [
-                0.2,        //海拔高度
-                1,          //地块状态
-                [],         //附属物列表
-                999,        //游戏模式配置
+                0.2,        //elevation
+                1,          //block status
+                [],         //adjuncts list
+                999,        //game mode setting, optional
             ]
         ]
     ```
   
-## 和附属物关系
+## Relationship with Adjunct
 
-* 所有的`附属物`都是依靠`地块`来进行定位的。`Block`的左下角的位置为[0,0]，右上角的位置为[16,16]，例如一个`Box`的定位为[3,4]时，将其放置在[x,y]的`Block`时，其在`World`的定位就是[16*x+3,16*y+4]。
-  
-* 采用这种方式之后，`Block`数据就可以被看成一个整体，从一个`Block`部署到另外一个`Block`就异常简单，只需要拷贝数据即可。
+* All adjuncts are positioned relative to the `Block`. The lower left corner of a `Block` is at [0,0], and the upper right corner is at [16,16]. For example, if a `Box` is positioned at [3,4] and placed in a `Block` at [x,y], its position in the World will be [16*x+3,16*y+4].
 
-## 限制措施
+* By adopting this method, `Block` data can be regarded as a whole, and deploying from one `Block` to another is extremely simple, just copying the data.
 
-* 存在用户在`Block`上构建不符合`World`世界观的数据，`Meta Septopus`提供了`Block`级别的管理措施来应对，当有`玩家`对`Block`的内容有异议，可以通过`Complain`来提交给`World Owner`进行处理，如属实，`World Owner`就可以执行`Ban`操作，`Septopus引擎`就不显示对应的内容。
+## Restrictive measures
 
-* 由于`附属物`依赖`Block`进行定位，就可以对其的尺寸和位置进行检测，防止出现将物品放置到其他`Block`的情况。
+* If a user creates data on a `Block` that is inconsistent with the World's worldview, Meta Septopus provides Block-level management measures to address this. When a player disagrees with the Block's content, they can submit a Complaint to the World Owner for processing. If the complaint is true, the World Owner can perform a Ban, and the Septopus Engine will not display the corresponding content.
+
+* Since `Adjunct` rely on `Block` for positioning, their size and position can be detected to prevent items from being placed in other `Blocks`.

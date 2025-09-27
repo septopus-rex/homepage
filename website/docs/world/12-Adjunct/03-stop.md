@@ -1,6 +1,6 @@
 # Stop
 
-* 代码位置:[/adjunct/basic_stop.js](https://github.com/septopus-rex/world/blob/main/engine/src/septopus/adjunct/basic_stop.js)
+* Code location: [/adjunct/basic_stop.js](https://github.com/septopus-rex/world/blob/main/engine/src/septopus/adjunct/basic_stop.js)
   
 * `Stop`组件，是创建一个阻拦`Player`运动的组件，可以是各种形状的。
 * `Stop`是执行阻拦机制的一个组件，但是由于其只在编辑模式下显形，会给人空气墙的感觉。
