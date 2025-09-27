@@ -2,56 +2,59 @@
 
 * Code location: [/adjunct/basic_box.js](https://github.com/septopus-rex/world/blob/main/engine/src/septopus/adjunct/basic_box.js)
 
-* `Box`组件，是创建一个立方体的，是一个很基础的`Adjunct`。
-* `Box`可以看成是一个最简单的组件，通过设置尺寸、位置和旋转，就可以在3D环境里生成一个盒子。通过设置贴图、动画效果，可以构建出有趣的内容。
+* The `Box` component creates a cube and is a very basic `Adjunct`.
+  
+* `Box` can be considered the simplest component. By setting the size, position, and rotation, you can create a box in a 3D environment. By setting textures and animation effects, you can create interesting content.
 
-## 数据定义
+## Data Structure
 
-* `Box`的数据结构，定义如下：
+* The data structure of `Box` is defined as follows:
   
     ```Javascript
         [
-            [ 4,  4, 0.2 ],         //box的尺寸
-            [ 14, 14, 0.1 ],        //box在block里的定位
-            [ 0, 0, 0 ],            //box的旋转值
-            3,                      //texture的ID
-            [ 1, 1 ],               //texture的贴图repeat参数
-            0,                      //动画效果
-            1                       //是否有stop属性，阻止玩家进入
+            [ 4,  4, 0.2 ],         //box size
+            [ 14, 14, 0.1 ],        //box position in block
+            [ 0, 0, 0 ],            //box rotation
+            3,                      //texture ID
+            [ 1, 1 ],               //texture repeat [x,y]
+            0,                      //animation effects
+            1                       //wether stop
         ]
     ```
 
-* 当数据没有版本信息的时候，默认版本为"2025"。
+* When the data has no version information, the default version is "2025".
 
-## 贴图说明
+## Texture
 
-* 对贴图的支持，可以让`Septopus World`显示精细的3D世界，同时具备很高的渲染性能。
-* 贴图文件，都需要保存在IPFS，作为资源倒入到`Septopus World`里来。
-* 贴图通过设置`重复`和`偏移`来精细调整其渲染效果。
-
-## 实现的动画
-
-* `盒子`实现了以下的动画效果。[呼吸效果,贴图切换效果,抖动效果,坠落效果,钟摆效果]
-
-|  动画效果   | 实现方法  | 3D  | 2D  |
-|  ----  | ----  | ----  | ----  |
-|  呼吸效果  |  标准动画支持 | ✅ | ✅ |
-|  贴图切换效果 | 标准动画支持   | ✅ | ✅ |
-|  抖动效果  | 标准动画支持   | ✅ | ✅ |
-|  坠落效果  | 标准动画支持   | ✅ | ✅ |
-|  钟摆效果  | 标准动画支持  |  ✅ | ✅ |
-|  随机移动  | 自定义动画实现  |  ✅ | ✅ |
-
-## 阻拦体支持
-
-* `盒子`通过配置参数，实现了`阻拦体`的效果，可以减少链上数据量。建议其他`附属物`都支持这一特性。
-* 创建的`阻拦体`尺寸是和`盒子`一致的，减少数据修改的复杂度。从构建内容来看，可以增加scale值，即通过放大`阻拦体`的尺寸，来防止穿模。
+* The support for textures allows Septopus World to display detailed 3D worlds while maintaining high rendering performance.
   
-## 任务支持
+* Texture files need to be saved in IPFS and imported into Septopus World as resources.
+  
+* Textures can be fine-tuned by setting `Repeat` and `Offset` to fine-tune their rendering effects.
 
-## 定义部分
+## Animation Effects
 
-* `Box`采用的定义，需要公布到链上。
+* The `box` implements the following animation effects: [Breathing, Texture Switching, Jitter, Falling, Pendulum]
+
+|  Effects   | Howto  | 3D  |
+|  ----  | ----  | ----  |
+|  Breathing  |  Support by Standard Animation | ✅ |
+|  Texture Switching | Support by Standard Animation   | ✅ |
+|  Jitter  | Support by Standard Animation   | ✅ |
+|  Falling  | Support by Standard Animation   | ✅ |
+|  Pendulum  | Support by Standard Animation  |  ✅ |
+
+## Stop Feature
+
+* By configuring parameters, the `Box` can achieve the effect of a `Stop`, which can reduce the amount of data on the chain. It is recommended that other `Adjunct` support this feature.
+
+* The created `Stop` is the same size as the `box`, reducing the complexity of data modification. From the construction content, you can increase the scale value, that is, by enlarging the size of the `Stop`, to prevent clipping.
+
+## Trigger Task
+
+## Definition
+
+* The definitions adopted by `Box` need to be published on the chain.
   
   ```Javascript
     {

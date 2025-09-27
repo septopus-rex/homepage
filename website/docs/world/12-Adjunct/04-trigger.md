@@ -2,17 +2,17 @@
 
 * Code location: [/adjunct/basic_trigger.js](https://github.com/septopus-rex/world/blob/main/engine/src/septopus/adjunct/basic_trigger.js)
 
-* `Trigger`组件是放置一个可以触发的组件，仅运行在`游戏模式`。
+* `Trigger` component is used to place a triggerable component, which only runs in `game mode`.
+  
+## Data Structure
 
-## 数据定义
-
-* `Trigger`的数据结构，定义如下：
+* The data structure of `Trigger` is defined as follows:
 
     ```Javascript
         [
-            [2, 2, 3],                //0.trigger的尺寸
-            [12, 4, 1.5],             //1.trigger在block里的定位
-            [0, 0, 0],                //2.trigger的旋转
+            [2, 2, 3],                //0.trigger size
+            [12, 4, 1.5],             //1.trigger position in block
+            [0, 0, 0],                //2.trigger rotation
             1,                        //3.wether stop
             0,                        //4.trigger event, [in,out,hold,touch]
             [                         //5.task when triggered
@@ -28,25 +28,25 @@
         ]
     ```
 
-* 当数据没有版本信息的时候，默认版本为"2025"。
-  
-## 类型说明
+* When the data has no version information, the default version is "2025".
+ 
+## Types
 
-* `Trigger`将支持各种类型的几何形状，用于实现复杂的触发状态。
+* `Trigger` will support various types of geometric shapes to implement complex trigger states.
 
-|  几何形状   | 基础说明  | 支持 |
+|  Geometry   | Detail  | Support |
 |  ----  | ----  | ----  |
-|  box  |  三维盒子的阻拦体 | ✅ |
-|  ball | 球体的阻拦体   | ❌ |
-|  cylinder | 柱体的阻拦体   | ❌ |
+|  box  |  3D box trigger | ✅ |
+|  ball | Spherical obstruction trigger   | ❌ |
+|  cylinder | Column barrier trigger  | ❌ |
 
-## 任务结构
+## Task Structure
 
-* `Trigger`采用条件判断的方式来判断是否执行，使用大量的预定义来进行处理，是个复杂的体系，需要仔细处理。
+* `Trigger` uses conditional judgment to determine whether to execute, and uses a large number of predefined methods for processing. It is a complex system that needs to be handled carefully.
+  
+## Definition
 
-## 定义部分
-
-* `Trigger`采用的定义，需要公布到链上。
+* The definitions adopted by `Trigger` need to be published on the chain.
   
     ```Javascript
         {
