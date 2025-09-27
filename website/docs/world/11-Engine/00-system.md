@@ -87,143 +87,143 @@
 |  ----  | ----  | ----  |
 | adjunct | 3D/2D data construction,data editing function,IO UI output,trigger tasks | `./adjunct/` |
 | frame  | Block management, world management, components organization and management |  `./core/framework.js` |
-| core  | 世界启动及管理；时间控制；气候控制；天空管理；玩家控制；玩家管理； |  `./core/` |
-| renderer  | 3D渲染；2D渲染 |  `./render/` |
-| controller  | 3D控制(手机端，PC端)；2D控制(手机端，PC端) | `./control/` |
-| IO  | 基础UI；区块链网络连接； | `./io/` |
-| lib  | 通用功能库；数据转换功能； | `./lib/`,`./three/` |
-| animation  | 通用的动画效果实现 | `./effects/` |
-| plugin  | 扩展功能； |`./plugin/` |
+| core  | World startup and management, time control, weather control, sky management, player control;|  `./core/` |
+| renderer  | 3D renderer, 2D renderer |  `./render/` |
+| controller  | 3D controller for PC and mobile, 2D controller for PC and mobile | `./control/` |
+| IO  | Basic UI, blockchain network connection | `./io/` |
+| lib  | General function library, data conversion function | `./lib/`,`./three/` |
+| animation  | General animation effect implementation| `./effects/` |
+| plugin  | Extended functionality |`./plugin/` |
 
 * Because 3D operations involve performance bottlenecks, the Septopus engine uses frame-synchronized computing to synchronize the data and functions being processed with frame updates, reducing latency and ensuring smooth 3D operation. For example, when a resource needs to be loaded from the network, the data is persisted, with a network request made once per frame. If a data request is successful, the parsing of a single resource is also processed within each frame.
 
-### 框架部分
+### Framework
 
-* 框架部分，解决了数据整合，代码管理等诸多功能。
+* The framework part solves many functions such as data integration and code management.
 
-|  主要功能   | 补充说明  | 文件位置  |
+|  Main Function   | Supplementary Notes  | File Location  |
 |  ----  | ----  | ----  |
-| 世界运行入口 | 启动Septopus的位置 | `core/world.js` --> `VBW.world.first()` |
-| 组件注册功能 | 挂载组件的注册信息；挂载组件的方法到`VBW`根；初始化`cache`数据; | `core/framework.js` --> `VBW.component` |
-| 帧同步实现 |  运行帧同步队列里的方法；更新渲染器； | `core/framework.js` --> `VBW.loop()` |
-| 全局数据 |  链式访问的全局数据； | `core/framework.js` --> `VBW.cache` |
-| 模式切换 | 不同模式下的数据调整；  | `core/framework.js` --> `VBW.mode()` |
-| 数据更新 | 外部获取数据的组件；根据组件类型`datasource`来挂载； | `core/framework.js` --> `VBW.datasource` |
-| 配置管理 |  所有组件配置的读和挂载；定义常量的读和挂载 | `core/framework.js` --> `VBW.setting` |
-| 运行环境检测 | 运行设备检测；Node属性检测； | `core/detect.js` |
-| 地块解析 |  数据转换及更新；编辑菜单输出； | `core/block.js` |
-| 事件管理 |  自定义事件；事件的绑定和解绑； | `core/event.js` |
-| 运动控制 |  物体基本运动实现；视角变换的实现；  | `core/movement.js` |
-| 玩家管理 |  运行状态保存；虚拟形象管理； | `core/player.js` |
-| 内部时间计算 |  根据区块高度来计算Septopus时间； | `core/time.js` |
-| 天气状态计算 |  根据区块哈希来计算Septopus天气特征； | `core/weather.js` |
+| Entry to run Meta Septopus | Septopus launch from here | `core/world.js` --> `VBW.world.first()` |
+| Component registration | Mount component registration information, mount component method to `VBW` root, initialize `cache` data | `core/framework.js` --> `VBW.component` |
+| Frame synchronization | Operation for frame synchronization, renderer update | `core/framework.js` --> `VBW.loop()` |
+| Global Data |  Global data accessed by chain | `core/framework.js` --> `VBW.cache` |
+| Mode Switching | Data adjustment in different modes  | `core/framework.js` --> `VBW.mode()` |
+| Data Update | Components for obtaining data externally, mounted according to component type `datasource` | `core/framework.js` --> `VBW.datasource` |
+| Configuration Management |  Read and mount all component configurations, define constants for reading and mounting | `core/framework.js` --> `VBW.setting` |
+| Operating environment detection | Run device detection, Node attribute detection | `core/detect.js` |
+| Block decoder |  Data conversion and update, edit menu | `core/block.js` |
+| Event management |  Custom events, event binding and unbinding | `core/event.js` |
+| Movement control |  Implementation of basic object movement, implementation of perspective transformation  | `core/movement.js` |
+| Player management |  Running state saving, avatar management; | `core/player.js` |
+| Time system |  Calculate Septopus time based on block height | `core/time.js` |
+| Weather system |  Calculate Septopus weather characteristics based on block hash | `core/weather.js` |
 
-### 渲染器
+### Renderer
 
-|  渲染器名称   | 主要功能  | 文件位置  | 挂载位置  |
+|  Name   | Main Function  | File Location  | Mouting  |
 |  ----  | ----  | ----  | ----  |
-|  3D渲染器  |  整体场景渲染；地块动态加载； | `render/render_3d.js`  |  `VBW.rd_three`  |
-|  2D渲染器  | 小地图功能实现；多维视图实现；  | `render/render_2d.js`  |  `VBW.rd_two`  |
-|  2D渲染器  | 独立组件查看；独立地块查看；  | `render/render_observe.js`  |  `VBW.rd_observe`  |
+|  3D Renderer  |  Overall scene rendering; dynamic loading of blocks; | `render/render_3d.js`  |  `VBW.rd_three`  |
+|  2D Renderer  | 2D map implementation; multi-dimensional view implementation  | `render/render_2d.js`  |  `VBW.rd_two`  |
+|  Observe Renderer  | Independent component viewing, independent block viewing  | `render/render_observe.js`  |  `VBW.rd_observe`  |
 
-### 控制器
+### Controller
 
-|  控制名称   | 主要功能  | 文件位置  | 挂载位置  |
+|  Name   | Main Function  | File Location  | Mouting  |
 |  ----  | ----  | ----  | ----  |
-|  3D第一人称控制  |  运动控制；键盘控制实现；屏幕触控操作实现； | `control/control_fpv.js`  |  `VBW.con_first`  |
-|  2D地图控制  |  按钮操控实现；屏幕操控实现；不同精度输出； | `control/control_2d.js`  |  `VBW.con_two`  |
-|  3D观察者模式控制  |  3D物体观察实现；屏幕控制实现 | `control/control_observe.js`  |  `VBW.con_observe`  |
+|  3D FPV controller  |  Motion control, keyboard control implementation, screen touch operation implementation | `control/control_fpv.js`  |  `VBW.con_first`  |
+|  2D map controller  |  Button control realization, screen control realization, output with different precision | `control/control_2d.js`  |  `VBW.con_two`  |
+|  3D observe controller  |  3D object observation and screen control | `control/control_observe.js`  |  `VBW.con_observe`  |
 
-### 输入输出
+### IO
 
-|  类别   | 主要功能  | 文件位置  | 挂载位置  |
+|  Category   | Main Function  | File Location  | Mouting  |
 |  ----  | ----  | ----  | ----  |
-|  UI框架  | 不同的输出方式实现；多种输入方式实现；UI框架复写功能；  | `io/io_ui.js`  | - |
-|  API管理  | 多网络数据读取；合约请求代理；数据订阅功能实现；  | `io/api.js`  | `VBW.datasource` |
+|  UI framework  | Different output methods are implemented, multiple input methods are implemented, UI framework duplication function  | `io/io_ui.js`  | - |
+|  API management  | Multi-network data reading, contract request proxy, data subscription function implementation  | `io/api.js`  | `VBW.datasource` |
 
-### 附属物
+### Adjuncts
 
-* `附属物`是系统功能扩展的核心组件，`引擎`实现了常用的`附属物`，列表如下：
+* Adjuncts are core components for system function expansion. The engine implements commonly used adjuncts, which are listed as follows:
 
-|  附属物名称   | 功能说明  | 详细说明  |
+|  Adjunct Name   | Main Function  | Details  |
 |  ----  | ----  | ----  |
-|  盒子  | 最简单的附属物，便于理解  | [盒子详情](../12-Adjunct/01-box.md)  |
-|  模型  | 导入外部模型的附属物，丰富内容的基础组件  | [模型详情](../12-Adjunct/02-module.md)  |
-|  阻拦体  | 基础附属物；阻拦玩家的运动；抬升玩家的站立高度；  | [阻拦体详情](../12-Adjunct/03-stop.md)  |
-|  触发器  | 基础附属物；构建游戏的核心；实现多种3D空间内的触发；对系统及附属物的控制； | [触发器详情](../12-Adjunct/04-trigger.md)  |
+|  Box  | The simplest adjunct for easy understanding  | [Detail](../12-Adjunct/01-box.md)  |
+|  Module  | Import external model adjunct to enrich the basic components of the content  | [Detail](../12-Adjunct/02-module.md)  |
+|  Stop  | Basic adjunct, block the player's movement, raise the player's standing height  | [Detail](../12-Adjunct/03-stop.md)  |
+|  Trigger  | Basic adjunct; build the core of the game, realize triggering in various 3D spaces, control the system and adjuncts | [Detail](../12-Adjunct/04-trigger.md)  |
 
-### 插件
+### Plugin
 
-|  插件名称   | 主要功能  | 文件位置  | 挂载位置  |
+|  Plugin Name   | Main Function  | File Location  | Mouting  |
 |  ----  | ----  | ----  | ----  |
-|  外部链接  | 在3D里显示外部链接；二维码方式的实现；  | `io/plug_link.js`  | `VBW.plugin.link`  |
-|  二维码  | 在3D里显示二维码；动画效果实现； | `io/plug_qr.js`  | `VBW.plugin.qr` |
+|  Link  | Display external links in 3D  | `io/plug_link.js`  | `VBW.plugin.link`  |
+|  QR  | Display QR code in 3D, animation effect realization | `io/plug_qr.js`  | `VBW.plugin.qr` |
 
-## 执行逻辑
+## Execution Logic
 
-### 分帧处理
+### Frame Processing
 
-* 为了3D运行的流畅，系统采用`分帧处理`的方式来解决以下的异步或者大量运算的情况。
+* In order to ensure smooth 3D operation, the system uses `frame processing` to solve the following asynchronous or large-scale computing situations.
 
-|  处理事项   | 卡顿原因  | 解决方法  |
+|  Matters   | Causes of lag  | Solution  |
 |  ----  | ----  | ----  |
-|  加载资源  | 异步的网络处理  |  异步处理不阻断，加载成功后再继续解析  |
-|  解析资源  | 模型或图片等资源解析会消耗大量资源  | 在`分帧`里逐条处理数据解析  |
+|  Resource loading  | Delay of asynchronous network processing  |  Asynchronous processing does not block, and parsing continues after successful loading  |
+|  Resource decoding  | Parsing resources such as models or images consumes a lot of resources  | Process data analysis one by one in `frame` |
 
-* `分帧处理`的实现，是使用队列来缓存需要处理的任务，然后在挂载`帧同步`方法里逐条处理队列里的任务。如此，单帧需要处理的计算就很有限，不会出现卡顿的现象。
+* Frame processing is implemented by using a queue to cache tasks that need to be processed, and then processing the tasks in the queue one by one in the mounted frame synchronization method. This way, the calculation required to process a single frame is very limited, and there will be no lag.
 
-### 输出显示
+### Form Output
 
-* `标准输入格式`是传递给UI构建前端输入输出的数据格式，其格式如下：
+* The standard input format is the data format passed to the UI to build the front-end input and output. Its format is as follows:
 
 ```Javascript
     {
-        type:"number",                      //输入类型
-        key:"x",                            //`标准编辑格式`里的键值
-        value:std.x,                        //传入的值
-        label:"X",                          //显示的表情
-        icon:"",                            //显示的图标
-        desc:"X of wall",                   //内容说明
-        valid:(val,cvt)=>{                  //参数检测函数
+        type:"number",                      //type of input
+        key:"x",                            //key fo `stand editing format`
+        value:std.x,                        //value of input
+        label:"X",                          //label to show
+        icon:"",                            //icon to show
+        desc:"X of wall",                   //description of this input
+        valid:(val,cvt)=>{                  //input valid checking function
             return valid.x(val,cvt,std)
         }
     }
    
 ```
 
-### 编辑过程
+### Editing Process
 
-* `地块`是不同于`附属物`的数据，但其也需要在3D世界里进行显示，所有，也存在编辑的过程。但其数据格式和`附属物`进行区分，但统一处理。
+* Block is different from adjunct, but they also need to be displayed in the 3D world, so they also need to be edited. However, their data format is different from adjunct, but they are handled uniformly.
 
 ```Javascript
     {
-        block:[2024,501],   //需要设置的
-        action:"set",       //使用的操作，["load","unload","set"]
+        block:[2024,501],   //block to update
+        action:"set",       //action, one of ["load","unload","set"]
         param:{
-            elevation:2,    //需要设置的参数
+            elevation:2,    //parameter to set
         },
     }
 ```
 
-* `标准编辑格式`是传输给`附属物`处理的数据标准，其格式如下。编辑参数由`附属物`产生，再交由`附属物`处理，因此除去基础的参数，就能支持`附属物`自定义的`键值`。
+* The standard editing format is the data standard transmitted to the adjunct for processing. Its format is as follows: Editing parameters are generated by the adjunct component and then processed by the adjunct component. Therefore, in addition to the basic parameters, it can support the key values ​​customized by the adjunct.
 
 ```Javascript
     {
-        adjunct:"wall",         //附属物的名称
-        action:"set",           //任务动作，["set","add","remove"]，
-        x:2025,                 //区块定位x
-        y:302,                  //区块定位y
-        param:{                 //传递给任务的参数
-            x:2,                    // STD_KEY --> Value
+        adjunct:"wall",         //name of adjunct
+        action:"set",           //action one of ["set","add","remove"]，
+        x:2025,                 //block X
+        y:302,                  //block Y
+        param:{ 
+            x:2,                //STD_KEY --> Value
         },
-        limit:["X","Y","Z"],    //修改中的限制
+        limit:["X","Y","Z"],    //limit of editing
     }
 ```
 
-* 当编辑过程中存在删除时，会改变`附属物`数组的拍序，从而导致编辑错误。需要对传入的操作进行排序，将删除的任务，放到最后执行。
+* When deletion occurs during editing, the order of the adjunct array will be changed, which may cause editing errors. The incoming operations need to be sorted and the deletion tasks should be executed last.
 
-### 动画的实现
+### Animation
 
-* 系统支持基础动画的实现，只需传回`动画格式`即可实现基础的旋转、缩放、移动等动画效果。
+* `Septopus Engine` supports the implementation of basic animations. You only need to return the animation format to achieve basic animation effects such as rotation, scaling, and movement.
   
-* 对于复杂的动画，可以由`附属物`来自定义计算位置。
+* For complex animations, custom positions can be calculated by the adjunct.
