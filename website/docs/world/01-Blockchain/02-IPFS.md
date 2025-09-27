@@ -1,3 +1,3 @@
 # IPFS
 
-* Septopus World是一个虚拟世界，需要很多的模型来创建丰富多彩的体验，需要大量的数据存储。IPFS就是一个极佳的解决方案，即可以存储大量数据，也是去中心化的分布式系统。
+* `Meta Septopus` is a virtual world that requires numerous models to create a rich and diverse experience, requiring a large amount of data storage. IPFS is an excellent solution, as it can store large amounts of data while also being a decentralized distributed system.

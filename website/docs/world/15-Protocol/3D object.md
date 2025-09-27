@@ -1,31 +1,30 @@
 # 3D Object Protocol
 
+* Septopus uses `three.js` as its rendering engine. In order to facilitate the separation of the `Septopus Engine` and the extension that can provide multi-rendering engine rendering, the call to `three.js` is encapsulated into this library.
 
-* Septopus采用`three.js`作为渲染引擎，为了便于分离`Septopus引擎`和能提供多渲染引擎渲染的扩展，将对`three.js`的调用封装成为该库。
+* `three.js` is a complex 3D rendering engine with a large amount of code, which is split into another file in the [three library](https://github.com/septopus-rex/world/tree/main/engine/src/septopus/three).
 
-* `three.js`是一个复杂的3D渲染引擎，代码量较大，拆分成了多一个文件，目录位于[three库](../../three/)。
+## Library Reference
 
-## 库文件引用
+* The encapsulated entry file is [entry.js]([../../three](https://github.com/septopus-rex/world/tree/main/engine/src/septopus/three)/entry.js), which is introduced as a single file.
 
-* 封装的入口文件为[entry.js](../../three/entry.js)，单文件引入。
+* There are only two methods to request this library, namely `get` and `mesh`, and their functions are shown in the following table.
 
-* 只有2个方法来请求这个库，分别是`get`和`mesh`，其功能如下表。
-
-|  方法名   | 主要用途  |  处理对象  |
+|  Method   | Function  |  Target  |
 |  ----  | ----  | ----  |
-|  `get`  | 获取到three.js的内置对象  | 所有的3D组件  |
-|  `mesh`  | 生成用于渲染的mesh，将其放入scene后即可进行3D显示  | 几何体和材质  |
+|  `get`  | Get the built-in objects of three.js  | All 3D components  |
+|  `mesh`  | Generate a mesh for rendering and put it into the scene for 3D display | Geometry and Materials  |
 
-## 对象类型
+## Object Category
 
-* 对`three.js`进行整理之后，将引用以下类别的对象及方法
+* After organizing `three.js`, the following categories of objects and methods will be referenced
 
-|  对象分类   | 主要用途  | 储存位置  |
+|  Category   | Main Function  | File location  |
 |  ----  | ----  | ----  |
-|  基础组件  | 3D渲染环境搭建的基础及核心对象，如场景、相机、Mesh等  | `THREE_FOLDER/basic`  |
-|  几何物体  | 创建3D内容的几何物体  | `THREE_FOLDER/geometry`  |
-|  灯光  |  不同的灯光效果，用于基础照明及创建氛围 | `THREE_FOLDER/light`  |
-|  材质  |  赋于`几何体`不同材质，形成丰富多彩的3D内容  | `THREE_FOLDER/material`  |
-|  纹理  |  将图像进行解析，用于`材质`的纹理  | `THREE_FOLDER/texture`  |
-|  模型加载器  |  加载不同类型的外部3D软件创建的模型 | `THREE_FOLDER/loader`  |
-|  扩展功能  |  经过二次封装的组件 | `THREE_FOLDER/extend`  |
+|  Basic Componet  | The foundation and core objects of 3D rendering environment construction, such as scenes, cameras, meshes, etc.  | `THREE_FOLDER/basic`  |
+|  Geometry  | Creating geometric objects for 3D content  | `THREE_FOLDER/geometry`  |
+|  Light  |  Different lighting effects for basic lighting and creating atmosphere | `THREE_FOLDER/light`  |
+|  Material  |  Give different materials to `geometry` to create rich and colorful 3D content  | `THREE_FOLDER/material`  |
+|  Texture  |  Parse the image and use it as the texture of the material  | `THREE_FOLDER/texture`  |
+|  Loader  |  Load models created by different types of external 3D software | `THREE_FOLDER/loader`  |
+|  Extend  |  Secondary packaging components | `THREE_FOLDER/extend` |

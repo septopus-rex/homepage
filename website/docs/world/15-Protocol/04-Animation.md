@@ -1,162 +1,153 @@
 # Animation Protocol
 
-
-* Septopus支持统一的`基础动画`，以便于`附属物`的开发，减少动画处理代码。
-* Septopus支持扩展的`自定义`动画，由`附属物`来实现效果，返回动画实现的方法。
-* 所有的动画，由`基础动画`复合而成，`附属物`传递回复合动画的参数。
-* 动画实现由`渲染器`来实现，用帧数来计算时间。
-* Septopus其他部分的动画效果，也是这么实现的，例如`触发器`引发的动画效果。
-* 使用了动画数据之后，2D渲染器也是可以独立实现动画效果。
+* Septopus supports unified `Standard Animations` to facilitate the development of `Adjunct` and reduce animation processing code.
   
-## 基础动画
+* Septopus supports extended `custom` animations, which are implemented by `Adjunct` and return methods for animation implementation.
+  
+* All animations are composed of `Standard Animations`, and `Adjunct` pass back the parameters of the composite animation.
+  
+* Animation is implemented by `renderer`, and time is calculated using frame numbers.
 
-* 动画的数据结构如下：
+* After using animation data, the 2D renderer can also achieve animation effects independently.
+  
+## Basic Animation
+
+* The data structure of the animation is as follows:
 
 ```Javascript
-  //返回的动画对象，可以使用function作为值返回
   {
-    "name": "AnimationName",      //动画的名称，用来简单描述动画效果
-    "target":{                    //动画执行的目标
-      "x": 2025,
-      "y": 667,
-      "world":0,
-      "adjunct":"box",
-      "index":1,
-    },
-    "duration": 3000,             //动画的循环时间，以ms为单位。0:持续执行;
-    "loops": 0,                   //动画循环次数。0:endless; >0:run times
-    "pending",2000,               //[pre,next]|next, 动画悬停事件，即启动下一个loop等待的时间
-    "timeline": [                 //动画的实现，在时间线上的分布
+    "name": "AnimationName",
+    "duration": 3000,             //The animation loop time, in milliseconds. 0: continuous execution;
+    "loops": 0,                   //The number of animation loops. 0:endless; >0:run times
+    "pending",2000,               //[pre,next]|next, animation hover event, that is, the waiting time for starting the next loop
+    "timeline": [                 //Implementation of animation, distribution on the timeline
       {
-        "time": 0,                //动画开始的时间，格式为"start"或"[start,end]"
-        "type": "rotate",         //基础动画方式
-        "axis": "Y",              //动画执行的坐标轴，为支付串，为["X","Y","Z","XY","XZ","YZ","XYZ"]中的一种
-        "mode": "add",            //数值设置方式，["add","set","multi"]中的一种
-        "value": 0.2              //设置的值             
+        "time": 0,                //The time when the animation starts, the format is "start" or "[start,end]"
+        "type": "rotate",         //Basic animation method
+        "axis": "Y",              //The coordinate axis for animation execution, one of ["X","Y","Z","XY","XZ","YZ","XYZ"]
+        "mode": "add",            //The value setting method, one of ["add", "set","random","multi"]
+        "value": 0.2              //Value to set             
       },
       {
-        "time": 2000,             //动画开始的时间，格式为"start"或"[start,end]"
-        "type": "rotate",         //基础动画方式
-        "mode": "set",            //数值设置方式，["add","set","multi","random"]中的一种
-        "axis": "X",              //动画执行的坐标轴，为支付串，为["X","Y","Z","XY","XZ","YZ","XYZ"]中的一种
-        "value":(now,duration,axis)=>{    //可以返回数组，和mode配合使用
+        "time": 2000,             //The time when the animation starts, the format is "start" or "[start,end]"
+        "type": "rotate",         //Basic animation method
+        "mode": "set",            //The value setting method, one of ["add", "set","random","multi"]
+        "axis": "X",              //The coordinate axis for animation execution, one of ["X","Y","Z","XY","XZ","YZ","XYZ"]
+        "value":(now,duration,axis)=>{    //customize animation
 
         },
       },
       {
-        "time": 500,              //动画开始的时间，格式为"start"或"[start,end]"
-        "type": "scale",          //基础动画方式
-        "mode": "multi",          //数值设置方式，["add","set","multi","random"]中的一种
-        "axis": "XYZ",            //动画执行的坐标轴，为支付串，为["X","Y","Z","XY","XZ","YZ","XYZ"]中的一种
-        "repeat": 3,              //值切换的速度，默认为1，在动画期间，切换多少次的值
-        "value": [0.8, 1.2 ],     //值选取方式，当为数组是，在[start,end]之间，随机选取
+        "time": 500,              //The time when the animation starts, the format is "start" or "[start,end]"
+        "type": "scale",          //Basic animation method
+        "mode": "multi",          //The value setting method, one of ["add", "set","random","multi"]
+        "axis": "XYZ",            //The coordinate axis for animation execution, one of ["X","Y","Z","XY","XZ","YZ","XYZ"]
+        "repeat": 3,              //The speed of value switching, the default is 1, how many times the value is switched during the animation
+        "value": [0.8, 1.2 ],     //The value selection method, when it is an array, is randomly selected between [start, end]
       },
       {
-        "time": [1000,1200],      //动画开始的时间，格式为"start"或"[start,end]"
-        "type": "move",           //基础动画方式
-        "mode": "set",            //数值设置方式，["add","set","multi","random"]中的一种
-        "axis": "Y",              //动画执行的坐标轴，为支付串，为["X","Y","Z","XY","XZ","YZ","XYZ"]中的一种
-        "repeat": 6,              //值切换的速度，默认为1，在动画期间，切换多少次的值
-        "value": [0.8, 1.2 ],     //值选取方式，当为数组是，在[start,end]之间，随机选取
+        "time": [1000,1200],      //The time when the animation starts, the format is "start" or "[start,end]"
+        "type": "move",           //Basic animation method
+        "mode": "set",            //The value setting method, one of ["add", "set","random","multi"]
+        "axis": "Y",              //The coordinate axis for animation execution, one of ["X","Y","Z","XY","XZ","YZ","XYZ"]
+        "repeat": 6,              //The speed of value switching, the default is 1, how many times the value is switched during the animation
+        "value": [0.8, 1.2 ],     //The value selection method, when it is an array, is randomly selected between [start, end]
       },
       {
-        "time": [1200,1800],      //动画开始的时间，格式为"start"或"[start,end]"
-        "type": "move",           //基础动画方式
-        "mode": "random",         //数值设置方式，["add","set","multi","random"]中的一种
-        "axis": "Y",              //动画执行的坐标轴，为支付串，为["X","Y","Z","XY","XZ","YZ","XYZ"]中的一种
-        "repeat": 2,              //值切换的速度，默认为1，在动画期间，切换多少次的值
-        "value": [0.83,0.89,1.12,1.28],     //值选取方式，当mode为random时，随机选取
+        "time": [1200,1800],      //The time when the animation starts, the format is "start" or "[start,end]"
+        "type": "move",           //Basic animation method
+        "mode": "random",         //The value setting method, one of ["add", "set","random","multi"]
+        "axis": "Y",              //The coordinate axis for animation execution, one of ["X","Y","Z","XY","XZ","YZ","XYZ"]
+        "repeat": 2,              //The speed of value switching, the default is 1, how many times the value is switched during the animation
+        "value": [0.83,0.89,1.12,1.28],     //The value selection method, when it is an array, is randomly selected between [start, end]
       },
       {
-        "time": [500,1000],       //动画开始的时间，格式为"start"或"[start,end]"
-        "type": "texture",        //基础动画方式
-        "mode": "random",         //数值设置方式，["add","set","multi","random"]中的一种    
-        "repeat": 2,              //值切换的速度，默认为1，在动画期间，切换多少次的值
-        "value": [12,22,33,44],   //值选取方式，为需要使用的texture的ID值列表
+        "time": [500,1000],       //The time when the animation starts, the format is "start" or "[start,end]"
+        "type": "texture",        //Basic animation method
+        "mode": "random",         //The value setting method, one of ["add", "set","random","multi"]    
+        "repeat": 2,              //The speed of value switching, the default is 1, how many times the value is switched during the animation
+        "value": [12,22,33,44],   //The value selection method, when it is an array, is randomly selected between [start, end]
       },
       {
-        "time": [1500,2000],      //动画开始的时间，格式为"start"或"[start,end]"
-        "type": "color",          //基础动画方式
-        "mode": "set",            //数值设置方式，["add","set","multi","random"]中的一种    
-        "repeat": 1,              //值切换的速度，默认为1，在动画期间，切换多少次的值
-        "value": [0x3fff2,0x67fa32,0x34ffa4],      //当mode为set时，顺序执行
+        "time": [1500,2000],      //The time when the animation starts, the format is "start" or "[start,end]"
+        "type": "color",          //Basic animation method
+        "mode": "set",            //The value setting method, one of ["add", "set","random","multi"]    
+        "repeat": 1,              //The speed of value switching, the default is 1, how many times the value is switched during the animation
+        "value": [0x3fff2,0x67fa32,0x34ffa4],      //When mode is set, execute sequentially
       },
       {
-        "time": [1900,2000],      //动画开始的时间，格式为"start"或"[start,end]"
-        "type": "opacity",        //基础动画方式
-        "mode": "add",            //数值设置方式，["add","set","multi","random"]中的一种 
-        "value": -0.01,           //当mode为set时，顺序执行
+        "time": [1900,2000],      //The time when the animation starts, the format is "start" or "[start,end]"
+        "type": "opacity",        //Basic animation method
+        "mode": "add",            //The value setting method, one of ["add", "set","random","multi"]
+        "value": -0.01,           //When mode is set, execute sequentially
       },
       {
-        "time": [1900,2000],      //动画开始的时间，格式为"start"或"[start,end]"
-        "type": "fall",           //基础动画方式
+        "time": [1900,2000],      //The time when the animation starts, the format is "start" or "[start,end]"
+        "type": "fall",           //Basic animation method
         "category":"camera",      //非mesh的调用方式
-        "mode": "add",            //数值设置方式，["add","set","multi","random"]中的一种 
-        "value": -0.01,           //当mode为set时，顺序执行
+        "mode": "add",            //The value setting method, one of ["add", "set","random","multi"]
+        "value": -0.01,           //When mode is set, execute sequentially
       },
     ]
   }
 ```
 
-### 基础键值设置
+### Basic Keys
 
-|  键值   | 类型  | 作用  |
+|  Key   | Type  | Function  |
 |  ----  | ----  | ----  |
-|  name  |  string | 动画的名称 |
-|  target | object  | 动画的执行对象 |
-|  duration  | number  | 动画的时长  |
-|  pending  | number[],number  | 动画的停顿时间  |
-|  loops  | number  | 全局控制整个动画的重复次数 |
-|  timeline  | object[] | 动画执行的动作列表 |
+|  name  |  string | Name of animation |
+|  duration  | number  | Animation duration  |
+|  pending  | number[],number  | Animation pause time  |
+|  loops  | number  | Globally control the number of repetitions of the entire animation |
+|  timeline  | object[] | List of actions performed by the animation |
 
-### `timeline`元素设置
+### Timeline Elements
 
-* `time`的值处理，有两种类型
+* `time` value processing, there are two condition.
 
-|  数据类型   | 执行结果  | 说明  |
+|  Type   | Result  | Detail  |
 |  ----  | ----  | ----  |
-|  number  |  [start,animation.duration] | 动画开始的时间点 |
-|  [number,number]  |  [start,end] | 动画执行的时段 |
+|  number  |  [start,animation.duration] | The time when the animation starts |
+|  [number,number]  |  [start,end] | The duration of the animation |
 
-* `type`的值设置及作用
+* `type` value setting and function
   
-|  动画名称   | 效果描述  | 实现方法  |
+|  Name   | Description  | Implementation  |
 |  ----  | ----  | ----  |
-|  位移(move)  |  3D物体在XYZ轴上移动位置 | 设置mesh的位置XYZ坐标 |
-|  旋转(rotate) | 3D物体在XYZ轴上旋转角度  | 设置mesh的XYZ旋转值 |
-|  缩放(scale)  | 3D物体在XYZ轴上按比例缩放  | 设置mesh的XYZ缩放值  |
-|  材质(texture)  | 3D物体材质切换  | 更新mesh材质对象，使用指定的texture |
-|  色彩(color)  | 3D物体色彩切换  | 更新mesh的材质对象 |
-|  透明(opacity)  | 3D物体的透明度 | 更新mesh的透明度 |
-|  形变(morph)  | 3D物体切换 | 切换3D的mesh |
+|  move  |  3D objects move on the XYZ axis | Set the mesh's XYZ coordinates |
+|  rotate | The rotation angle of the 3D object on the XYZ axis  | Set the XYZ rotation of the mesh |
+|  scale  | 3D objects are scaled proportionally on the XYZ axes  | Set the XYZ scale of the mesh  |
+|  texture  | 3D object material switching  | Updates the mesh material object to use the specified texture |
+|  color  | 3D object color switching  | Update the mesh's material object |
+|  opacity  | Transparency of 3D objects | Update the transparency of the mesh |
+|  morph  | 3D object deformation switching | Switch 3D mesh |
 
-<!-- |  路径(path)  | 3D物体按照路径移动 | 设置mesh的位置 |  --使用指定的方法来灵活实现 -->
-
-* `mode`和`value`的值处理，满足复杂的动画效果。当`value`为`function`时，使用计算返回的数据的类型来处理。`value`随机选取时，会计算取用精度，和输入的范围一致。
+* `mode` and `value` are processed to meet complex animation effects. When `value` is `function`, the type of the data returned by the calculation is used for processing. When `value` is randomly selected, the precision is calculated and consistent with the input range.
   
-|  mode取值   | value类型  | 实现方法  |
+|  Set Mode   | Value Type  | Implementation  |
 |  ----  | ----  | ----  |
-|  add  |  number | 将值加到对应的位置 |
-|    |  number[start,end] | 添加随机的值 |
-|  set | number  | 将值加到对应的位置 |
-|    | number[start,end]  | 数组长度为2的时候，为[start,end]形式，在动画时间内，随机设置其中的一个值 |
-|    | number[]  | 在动画时间内，顺序设置对应的值 |
-|  multi  | number  | 将值乘对应的位置  |
-|    | number[]  | 在动画时间内，将值乘对应的位置 |
-|  random  | number[start,end]  | 数组长度为2的时候，为[start,end]形式，随机选取其中的一个值 |
-|    | number[]  | 在动画时间内，随机设置，即random时候仅使用set方式 |
+|  add  |  number | Add the value to the corresponding position |
+|    |  number[start,end] | Add random values |
+|  set | number  | Add the value to the corresponding position |
+|    | number[start,end]  | When the array length is 2, it is in the form of [start, end], and one of the values ​​is randomly set during the animation time. |
+|    | number[]  | During the animation time, set the corresponding values ​​in sequence |
+|  multi  | number  | Multiply the value by the corresponding position  |
+|    | number[]  | During the animation time, multiply the value by the corresponding position |
+|  random  | number[start,end]  | When the array length is 2, it is in the form of [start, end] and one of the values ​​is randomly selected |
+|    | number[]  | During the animation time, random settings are used, that is, only the set method is used when random |
 
-* `repeat`的值处理。在时间段内，该动画切换的频率，即被执行的次数，为局部循环。
+* `repeat` value processing. The frequency of the animation switching within the time period, that is, the number of times it is executed, is a local loop.
 
-|  值   | 执行结果  |
+|  Value   | Result  |
 |  ----  | ----  |
-|  不设置  |  每帧都执行值设置 |
-|  number  |  在`time`设置的时间段内，做插值计算，即将时间段按照"repeat+1"进行分段，取分界点。 |
+|  None  |  Value setting is performed every frame |
+|  number  |  Perform interpolation calculation within the time period set by `time`, that is, divide the time period into segments according to "repeat+1" and take the dividing points. |
 
-* `bias`的值处理。只在`rotate`和`scale`时候发挥作用，用于实现偏心旋转和偏心缩放。
+* `bias` value processing. It only works when `rotate` and `scale` are used to achieve eccentric rotation and eccentric scaling.
   
-* `category`的值设置及作用。当设置为`camera`时，可以设置玩家的视角，调整玩家的位置。
+* `category` value settings and functions. When set to `camera`, you can set the player's perspective and adjust the player's position.
 
-## 自定义动画
+## Customize Animation
 
-* 用户自定义的动画方法，也需要使用统一的逻辑来进行处理。
+* User-defined animation methods also need to be processed using unified logic.

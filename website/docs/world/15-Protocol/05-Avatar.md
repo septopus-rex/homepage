@@ -1,7 +1,7 @@
 # Avatar Protocol
 
-* 使用[Mixamo](https://www.mixamo.com/)作为基础素材，都使用同一个骨骼系统，来支持不同的形象。
+* Using [Mixamo](https://www.mixamo.com/) as the base avatar, the same skeleton system is used to support different avatars.
 
-## 基础骨骼
+## Skeleton
 
-## 支持动作
+## Actions

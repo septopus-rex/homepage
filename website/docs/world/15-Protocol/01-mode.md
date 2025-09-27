@@ -1,7 +1,9 @@
 # Mode Protocol
 
-* 使用`Framework`的`mode`方法进行模式切换，调用如下：
+* Mode allows Meta Septopus to run in different environments and perform different tasks. Especially in Gaming Mode, which requires extremely high permissions, we have adopted a method of truncation of data access to ensure security.
 
+* Use the `mode` method of `Framework` to switch modes. Call as follows:
+  
 ```Javascript
     const target = { x: x, y: y, world: world, container: dom_id }
     const mode = def.MODE_EDIT;
@@ -10,33 +12,38 @@
     });
 ```
 
-## 正常模式 ( Normal )
+## Ghost Mode
 
-* Normal Mode的请求如下
+* In the `Ghost Mode`, players can move freely in the 3D world, but cannot purchase or update `Blocks`.
+  
+## Normal Mode
 
-## 游戏模式 ( Game )
+* In `Normal Mode`, players can move freely in the 3D world, purchase Blocks, and update Block content.
 
-* 游戏模式是为了提升玩家的体验，有两方面的功能需要实现，一是预加载，二是启动触发器支持
+* In `Normal Mode`, when a player stands on a Block they own, they can enter `Edit Mode` to edit and update the contents of the Block.
 
-* Game Mode的请求如下。在检测到block位置有Game的Setting时候，可以进入到Game模式。后期考虑Game的Adjunct来进行触发。
+* In `Normal Mode`, players cannot interact with content placed in a Block by other players.
+
+## Game Mode
+
+* The game mode is to enhance the player's experience. There are two functions that need to be implemented: preloading and trigger support.
 
 ```Javascript
-    const target = { x: x, y: y, world: world, container: dom_id }  //游戏开始的block
+    const target = { x: x, y: y, world: world, container: dom_id }  //block to start game mode
     const mode = def.MODE_GAME;
     const cfg={
-        blocks:[        //预加载的block数据，该区域将绘制成游戏地图
-            [1982,619],         //单一的预加载block
-            [1983,619,5,5],     //预加载区域，[block_start_x,block_start_y,extend_x,extend_y]
+        blocks:[        //blocks need to preload
+            [1982,619],         //single block to load
+            [1983,619,5,5],     //area to load, [block_start_x,block_start_y,extend_x,extend_y]
         ],
-        init:{          //初始化设置，根据游戏需要来设定
-            sky:{},                 //可选，设置游戏时候的天空，用于控制氛围
-            weather:{},             //可选，设置游戏时候的天气，用于控制氛围
-            start:{                 //可选，定义游戏启动的位置，必须在blocks里
+        init:{          //game setting
+            sky:{},                 //optional, set the sky
+            weather:{},             //optional, set the weather
+            start:{                 //optional, set the start position of player
                 block:[1983,620],       
                 position:[],
                 rotation:[],
             },
-            server:{},              //可选，用于游戏的网络通讯。
         },      
     }
     VBW.mode(mode, target, (done) => {
@@ -44,11 +51,11 @@
     });
 ```
 
-* 游戏模式下，切断了所有的系统请求，不会对状态进行更新。只和设定的`游戏API`进行互动，
+* In `Game Mode`, all system requests are cut off and the status will not be updated. It only interacts with the set `game API`.
 
-* 游戏模式下，增加对预定义的外部API的支持，以明文的方式保存在链上。使用和`trigger`一致的定义来调用系统资源。
-    1. `end`方法必须存在，用于处理游戏正常结束，`游戏服务器`接受数据。
-    2. `start`方法必须存在，用于游戏开始，`游戏服务器`初始化运行环境。
+* In `Game Mode`, support for predefined external APIs is added, which are stored on the chain in plain text. Use the same definition as `trigger` to call system resources.
+    1. The `end` method must exist to handle the normal end of the game and the `game server` accepting data.
+    2. The `start` method must exist to start the game and initialize the running environment of the `game server`.
 
 ```Javascript
     const game_setting={
@@ -84,24 +91,14 @@
     }
 ```
 
-### 区域预加载
+### Pre-rendering
 
-```Javascript
-    const target = { x: x, y: y, world: world, container: dom_id }
-    const mode = def.MODE_EDIT;
-    VBW.mode(mode, target, (done) => {
-        
-    });
-```
+* For better results, the baked data can also be loaded at this time.
 
-### 预渲染
+### Network Access Control
 
-* 为了更好的效果，烘培出的数据，也可以这时候进行加载。
+* In `Game Mode`, using `region preloading`, after acquiring all resources, the ability to retrieve data is cut off. Only interaction with the `game API` remains. Only when exiting game mode can the `datasource` API be used to continue retrieving data.
 
-### 网络访问控制
-
-* 游戏模式下，使用`区域预加载`的方式，获取到所有的资源后，即切断其获取数据的能力。只留下和`游戏API`进行互动，只有退出游戏模式时，才能继续使用`datasource`的API继续获取数据。
-
-* 这么做是出于两个原因
-    1. 游戏流畅性。当处于游戏模式时，由于不加载其他的Block，就不会受到数据更新的影响，提升性能。
-    2. 安全性。由于`datasource`的API里存在合约调用的方法，在游戏模式下切断后，可以避免出现安全性问题。
+* This is done for two reasons.
+    1. Game smoothness. When in game mode, since no other blocks are loaded, it will not be affected by data updates, improving performance.
+    2. Security. Since the `datasource` API contains contract call methods, security issues can be avoided after disconnecting it in game mode.

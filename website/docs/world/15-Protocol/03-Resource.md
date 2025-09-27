@@ -1,22 +1,25 @@
 # Resource Protocol
 
-* 对所有链上数据进行格式化的协议，因3D需要调用大量的资源，放在合约不合适，就需要存储在IPFS上。
-* 使用base64格式，需要解码才能恢复，避免被直接运行，提升一点安全性。
-* 使用明文的方式来说明，便于人工审查。
-* 关键字如下
-  
-| 键名 | 说明 | 可选值 |
-| --- | --- | --- |
-| type | Meta Septopus支持的类型 | [module,texture,avatar,lines,block，adjunct...] |
-| format | 原始文件类型 |  |
-| raw | base64格式编码的字符串 |  |
-| more | 扩展配置 |  |
+* A protocol for formatting all on-chain data. Since 3D requires a large amount of resources and is not suitable for contracts, it needs to be stored on IPFS.
 
-## 支持类型
+* Use base64 format, which requires decoding to restore, to prevent it from being run directly, thus improving security.
+
+* Use plain text to facilitate manual review.
+
+* Keywords as follow:
+  
+| Key | Detail | Option |
+| --- | --- | --- |
+| type | Meta Septopus supported types | [module,texture,avatar,lines,block，adjunct...] |
+| format | Original file type |  |
+| raw | Base64-encoded string |  |
+| more | Extended Configuration |  |
+
+## Types
 
 ### Module
 
-* 各种导出的3D模型文件，需要明确format进行解析。
+* Various exported 3D model files need to be clearly formatted for parsing.
   
     ```Javascript
     {
@@ -31,7 +34,7 @@
 
 ### Texture
 
-* 纹理类型，主要是图像。
+* Texture type, primarily images.
 
     ```Javascript
     {
@@ -46,7 +49,7 @@
 
 ### Lines
 
-* 台词文字数据，供调用。
+* Dialogue text data for retrieval.
   
     ```Javascript
     {
@@ -61,7 +64,7 @@
 
 ### Block
 
-* Meta Septopus里的完整的block数据。
+* Complete block data in Meta Septopus.
   
     ```Javascript
     {
@@ -73,7 +76,7 @@
 
 ### Adjunct
 
-* Meta Septopus里的完整的block数据。
+* Adjunct code file for Meta Septopus.
   
     ```Javascript
     {
@@ -88,7 +91,7 @@
 
 ### Avatar
 
-* Meta Septopus支持的avatar数据。
+* Avatar data supported by Meta Septopus.
 
     ```Javascript
     {
