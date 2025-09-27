@@ -76,9 +76,9 @@ export default adjunct;
 |  Name   | Function  | Detail  | Code  |
 |  ----  | ----  | ----  | ----  |
 |  Stop  | Basic constructure, stop the player's movement, raise the player's standing height  | [Stop Detail](./03-stop.md)  | [basic_stop.js](https://github.com/septopus-rex/world/blob/main/engine/src/septopus/adjunct/basic_stop.js)  |
-|  Trigger  | Basic constructure, build the core of the game, realize triggering in various 3D spaces, control the system and adjuncts | [Trigger Detail](./04-trigger.md)  | [basic_trigger.js]([../../adjunct/basic_trigger.js](https://github.com/septopus-rex/world/blob/main/engine/src/septopus/adjunct/basic_trigger.js))  |
+|  Trigger  | Basic constructure, build the core of the game, realize triggering in various 3D spaces, control the system and adjuncts | [Trigger Detail](./04-trigger.md)  | [basic_trigger.js](https://github.com/septopus-rex/world/blob/main/engine/src/septopus/adjunct/basic_trigger.js)  |
 |  Box  | The simplest adjunct for easy understanding  | [Box Detail](./01-box.md)  | [basic_box.js](https://github.com/septopus-rex/world/blob/main/engine/src/septopus/adjunct/basic_box.js)  |
-|  Module  | Import external model adjunct to enrich the basic components of the content  | [Module Detail](./02-module.md)  |[basic_module.js]([../../adjunct/basic_module.js](https://github.com/septopus-rex/world/blob/main/engine/src/septopus/adjunct/basic_module.js))  |
+|  Module  | Import external model adjunct to enrich the basic components of the content  | [Module Detail](./02-module.md)  |[basic_module.js](https://github.com/septopus-rex/world/blob/main/engine/src/septopus/adjunct/basic_module.js)  |
 
 * Complex function `Adjuncts` are built as foundational components and are specified in the world configuration for easy loading. Extended `Ajuncts` are primarily used to implement 3D content, transforming Septopus into a rich and diverse virtual world.
 

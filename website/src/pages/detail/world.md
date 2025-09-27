@@ -9,67 +9,61 @@
 
 ## Overview
 
-* `Meta Septopus`是`Septopus`系统的基石，一是用来确认`Septopus`的参与者，二是`Septopus`的主入口。
-* `Meta Septopus`是被设计为一个完全的去中心化系统，从程序和数据两个方面做出了开创性的设计。从数据角度来看，`Meta Septopus`数据定义完全开放公布在链上，即使没有现在的解析器（Virtual Block World），只需遵循协议，也能还原出一样的虚拟是恶疾。从程序角度来看，完全的链上部署和开放的附属物开发标准，使得`Meta Septopus`是个充满无数可能性的开发世界。
-* `Meta Septopus`是一个UGC的系统，而且数字资产真正属于了用户自己。在`Meta Septopus`，只需要花费很少的费用（0.01SOL），就可以拥有一块属于自己`Block`，即可以交易，也可以在`Block`上创建有趣的3D内容，甚至是一个实现盈利的游戏。
-* `Meta Septopus`采用分级管理系统，每个`World`都有自己的`Owner`，他可以通过对参数的设定、对附属物的选择，来构建不一样的世界观，形成风格各异的虚拟世界。
-* `Meta Septopus`的`Adjunct`是对系统进行扩展的主要方式，精简和开放的结构，让开发3D的内容变得简单。`Adjunct`的开发者，可以从用户的使用和`World Owner`的授权使用中获益。
-* `Meta Septopus`自启动之后，即可自主运。新世界的发行，也无需人员干预，这一机制，保证了`Meta Septopus`实现真正的去中心化。自洽的系统，在极端情况下，也能自我恢复，展现了去中心化强大的生命力。
+* **Meta Septopus** is the cornerstone of the Septopus system, serving two purposes: first, to confirm Septopus participants, and second, to act as the main gateway for all Septopus activities.  
+* **Meta Septopus** is designed as a completely decentralized system, featuring groundbreaking design in both its programs and data structure. From a data perspective, the **Meta Septopus** data definition is entirely open and publicly available on-chain. Even without the current parser (Virtual Block World), an identical virtual world can be reconstructed simply by adhering to the protocol. From a programmatic perspective, full on-chain deployment and open Adjunct development standards ensure that **Meta Septopus** is an open development world full of infinite possibilities.  
+* **Meta Septopus** is a UGC (User-Generated Content) system where digital assets truly belong to the users. In **Meta Septopus**, users can own their own **Block** for a minimal fee (0.01 SOL), which can be traded or used to create engaging 3D content, or even a profitable game.  
+* **Meta Septopus** adopts a tiered management system, where each **World** has its own **Owner**. The Owner can establish a unique worldview and create varied virtual environments by setting parameters and selecting authorized Adjuncts.  
+* The **Adjunct** system in **Meta Septopus** is the primary method for extending the platform's functionality. Its streamlined and open structure simplifies 3D content development. **Adjunct** developers can profit from user purchases and licensing fees paid by the **World Owner**.  
+* Once launched, **Meta Septopus** operates autonomously. The issuance of new Worlds requires no human intervention, a mechanism that ensures **Meta Septopus** achieves true decentralization. The self-consistent system can self-recover even in extreme scenarios, showcasing the robust vitality of decentralization.
 
 ## Funding
 
-* `Meta Septopus`发行10亿的`SPL Token`，公开销售其20%即2亿，定价为0.01U。剩余的80%即8亿，进行2年的锁定，和`Spetopus`的`Launch Period`一致。
+* Meta Septopus will issue 1 billion SPL Tokens and publicly sell 20% (200 million) of them at a price of 0.01U. The remaining 80% (800 million) will be locked up for 2 years, coinciding with the Spetopus Launch Period.
   
-| 占比 | 作用 | 锁定 |
+| Pie | Function | Lock |
 | --- | --- | --- |
-| 20% | 公开销售，定价0.01U | -  |
-| 20% | Septopus持有，Project的回报 | 锁定1年6个月 |
-| 60% | Meta Septopus持有 | 锁定2年 |
-
-* `Meta Septopus`代币的销售时间为：
+| 20% | Public sale, priced at 0.01U | -  |
+| 20% | Septopus holds, Project's returns | 2 years |
+| 60% | Meta Septopus holds | 2 years |
   
-## 经济模型
+## **Economic Model**
 
-* `Meta Septopus`使用SOL作为交易的数字货币。世界的发行、Block的交易、Adjunct的付费，都使用SOL。
-* `Meta Septopus`发行Token，其独立运行，也验证Septopus管理Project的模型。
-* `Meta Septopus`构建了一个多层次多参与度的虚拟世界，不同的角色都可以在`Meta Septopus`实现盈利，而不仅仅是`Block`的销售。
+* **Meta Septopus** uses **SOL** as the primary digital currency for transactions. World issuance, Block trading, and Adjunct payments are all conducted using SOL.  
+* **Meta Septopus** issues its own Token, which operates independently and verifies the Septopus model for managing Projects.  
+* **Meta Septopus** builds a multi-tiered, multi-participant virtual economy, where various roles can achieve profitability, extending beyond just **Block** sales.
+  
+### **World Mechanism**
 
-### World机制
+* **Meta Septopus** is a self-running system, realized through the following issuance method:  
+  1. The total number of **Worlds** issued is 100, Each world consists of 4096 * 4096 **Blocks**, with each Block measuring 16m * 16m in the physical world equivalent.  
+  2. **World #0** is initiated for auction by the **King**, formally launching the autonomous **Meta Septopus**. Once the **World Owner** is confirmed, **Blocks** become available for purchase.  
+  3. The default selling price for a **Block** is **0.01 SOL**. The sales revenue is split between the **World Owner** and **Meta Treasure** at a 5:5 ratio. Specifically, for every Block sold, the World Owner receives 0.005 SOL, and Meta Treasure receives 0.005 SOL.  
+  4. When the sales rate reaches **60%**, the auction for the next World is triggered. The current World Owner may also modify the initial Block sales price. The revenue split with the Septopus Treasury remains unchanged, meaning the Septopus Treasury still receives 0.005 SOL for every Block sold.  
+  5. After the new World's Owner is confirmed via auction, Block sales for that World also begin at a price of 0.01 SOL.  
+* **Meta Septopus** primarily relies on content to sustain its long-term operation. Both the **World Owner** and the **Block Owner** are participants, creating a rich and varied virtual world through different roles and varied revenue streams.
 
-* `Meta Septopus`是一个自运行的系统，是通过以下的发行方式来实现的
-  1. 总发行的`World`数量为100个，每个世界由4096*4096个`Block`构成，每个`地块`的尺寸为物理世界的16m*16m。
-  2. #0 World由`King`发起拍卖，正式开启自主运行的`Meta Septopus`。确认World Owner后，`Block`就可以进行购买。
-  3. `Block`的默认销售价格为0.01SOL，销售收入由`World Owner`和`Meta Treasure`分成，为5:5。即每销售1个`Block`，`World Owner`得0.005SOL，`Meta Treasure`得0.005SOL。
-  4. 待销售率达到60%时，开启下一个世界的拍卖，同时当前的World Owner可以修改初始销售Block的价格。和Septopus国库分成比例不变，即每销售1个Block，Septopus国库仍得0.005SOL。
-  5. 新World拍卖确认Owner之后，也开始销售，价格为0.01SOL
+### **World Auction**
 
-* `Meta Septopus`主要是通过内容来实现持久运行。无论是`World Owner`还是`Block Owner`，都是参与的一份子，从不同的角度，使用不同的盈利方式来共同创造一个丰富多彩的虚拟世界。
+* The **World** auction is divided into two phases to ensure a **World Owner** is generated: Phase 1 is a Dutch Auction, and Phase 2 is a Lottery Selection. If Phase 1 fails, the process proceeds to Phase 2.  
+* **Phase 1: Dutch Auction**  
+  1. A 1-week **Auctioneer Preparation** period is initiated. **Auctioneers** stake 10 SOL to join the **Auction Pool**, thereby gaining eligibility to participate and potentially become the **World Owner**.  
+  2. One day after the Auctioneer Preparation phase ends, the auction begins, adopting a Dutch Auction format. The price starts at **1000 SOL** and linearly descends by **0.1 SOL** with each new Solana block, until it reaches **100 SOL**.  
+  3. One day after the auction ends, Auctioneers can redeem their staked 10 SOL.  
+  4. If the auction is successful, the Auctioneer pays the corresponding fee and becomes the official **World Owner**, and the World auction concludes.  
+  5. If the auction fails, a new auction restarts one day later.  
+  6. If three consecutive auctions fail, the process enters Phase 2: Lottery Selection.  
+* **Phase 2: Lottery Selection**  
+  1. A 1-week **Lottery Participant Preparation** period is initiated. **Lottery Participants** pay 1 SOL to join the **Lottery Pool**, gaining the right to be selected as the **World Owner**.  
+  2. One day after the Lottery Participant Preparation phase ends, the **Drawing Block** height is determined based on the number of participants.  
+  3. The block hash of the **Drawing Block** is subjected to **100 million SHA256 computations** to generate the final hash, which determines the winning participant, who becomes the **World Owner**. The World auction then concludes.  
+* After a **World** begins sales, the auction for the next World is triggered when **80%** of its **Blocks** have been sold.
 
-### World拍卖
+### **World Operation**
 
-* `World`拍卖，分为2个阶段，保障能生成`World Owner`。第一阶段为荷兰式拍卖，第二阶段为乐透式选取。如第一阶段失败，即进入第二阶段。
+* The **World Owner** can configure on-chain data and set up Adjuncts to manage the presentation of the world, paying fees to the Adjunct developers.  
+* The **World Owner** charges a **3%** transaction fee on **Block** trades, which is paid by the buyer.
 
-* 第一阶段，荷兰式拍卖。
-  1. 开启1周的`拍卖者准备`，`拍卖者`质押 10SOL 来加入`拍卖池`，获取参与拍卖获取`World Owner`的资格。
-  2. `拍卖者准备`阶段结束后1天，开始拍卖，采用荷兰式，价格从 1000SOL 开始，随着 Solana 的区块高度线性下降，每次为 0.1SOL，直到降至100SOL止。
-  3. 拍卖结束1天后，`拍卖者`可以赎回质押的 10SOL。
-  4. 拍卖成功的话，`拍卖者`支付相应的费用，即可成为真正的`World Owner`，世界拍卖结束。
-  5. 如果拍卖失败，1天后，重新启动新的拍卖。
-  6. 如果连续拍卖失败3次，即进入第二阶段的乐透式选取。
+### **Block Operation**
 
-* 第二阶段，乐透式选取。  
-  1. 开启1周的`抽奖者准备`，`抽奖人`支付 1SOL 来加入`抽奖池`，获得参与抽奖获取`World Owner`的权利。
-  2. `抽奖者准备`阶段结束后1天，根据`抽奖人`数量来确定`抽奖区块`高度。
-  3. 对`抽奖区块`的区块哈希，进行1亿次的`SHA256`计算，得到最终的哈希，确定中奖者，成为`World Owner`，世界拍卖结束。
-
-* `World`开始销售之后，80%的`Block`被销售之后，启动下一个`World`的拍卖。
-
-### World运营
-
-* `World Owner`可以对链上数据进行配置，设置Adjunct，来管理世界的呈现，并支付费用给Adjunct开发者。
-* `World Owner`对Block的交易，收取交易费用，费率为3%。
-
-### Block运营
-
-* `Block`通过自主定价销售，会转移`Block`及其上的所有内容物。销售将支付交易费用给`World Owner`，由购买方支付。
-* `Block`上可以创建内容，也可以是付费游戏，`Block Owner`可以直接赚取收入。
+* **Blocks** are sold via self-determined pricing and involve the transfer of the Block and all its contained content. The sale will incur a transaction fee to the **World Owner**, paid by the buyer.  
+* **Block Owners** can create content on their Block, including paid games, and directly earn revenue.

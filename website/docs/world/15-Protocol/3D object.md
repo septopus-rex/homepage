@@ -6,7 +6,7 @@
 
 ## Library Reference
 
-* The encapsulated entry file is [entry.js]([../../three](https://github.com/septopus-rex/world/tree/main/engine/src/septopus/three)/entry.js), which is introduced as a single file.
+* The encapsulated entry file is [entry.js](https://github.com/septopus-rex/world/tree/main/engine/src/septopus/three/entry.js), which is introduced as a single file.
 
 * There are only two methods to request this library, namely `get` and `mesh`, and their functions are shown in the following table.
 
