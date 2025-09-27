@@ -2,12 +2,12 @@
 
 * Code location: [/three/entry.js](https://github.com/septopus-rex/world/blob/main/engine/src/septopus/three/entry.js)
 
-* `Septopus 引擎`封装了three.js，用于统一管理3D关联对象，也充分和three.js解耦，可以方便的切换到其他的渲染引擎。
+* The Septopus Engine encapsulates three.js for unified management of 3D related objects. It is also fully decoupled from three.js, making it easy to switch to other rendering engines.
 
-## 创建3D核心组件
+## Core Components
 
-* 使用`ThreeObject.get(cat, mod, params)`，主要用来创建3D的`Scene`,`Camera`等核心组件。
+* Use `ThreeObject.get(cat, mod, params)` to create 3D core components such as `Scene` and `Camera`.
 
-## 创建Mesh
+## Creating Meshes
 
-* 使用`ThreeObject.mesh(geometry,material,position,rotation)`，主要用来创建可以显示的mesh。
+* Use `ThreeObject.mesh(geometry,material,position,rotation)`, which is mainly used to create a mesh that can be displayed.

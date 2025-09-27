@@ -73,7 +73,7 @@
                     "dark sky"            // 🌑
                 ],
                 rain: [
-                    "frog",              // 🐸
+                    "fog",               // 🌫️
                     "drizzle",           // 🌦
                     "light rain",        // 🌧
                     "moderate rain",     // 🌧

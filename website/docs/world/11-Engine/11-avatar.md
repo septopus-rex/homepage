@@ -1,5 +1,7 @@
 # Avatar System
 
-* `引擎`支持多样的Avatar，对应设置`Player`的运动能力，来进行区分。
+* The `Engine` supports a variety of Avatars, and the corresponding settings of the `Player`'s movement ability are used to distinguish them.
 
-## Avatar协议
+## Avatar Protocol
+
+* Not confirmed yet.

@@ -2,18 +2,18 @@
 
 * Code location: [/io/api.js](https://github.com/septopus-rex/world/blob/main/engine/src/septopus/io/api.js)
 
-* `Datasource`主要提供了以下的功能。
-
-    | 方法名 | 作用 | 示例 |
+* `Datasource` mainly provides the following functions.
+  
+    | Method | Function | Sample |
     | --- | --- | --- |
-    | init | 初始化系统 |  `VBW.datasource.init( cfg )` |
-    | contract | 链上合约请求，都集中在这里 | `VBW.datasource.contract` |
-    | world | 获取对应world的配置 |  `VBW.datasource.world( index,ck,cfg )` |
-    | view | 获取block数据的方法 | `VBW.datasource.view( x, y, ext, world, ck, limit)` |
-    | module | 批量获取模型数据的方法 | `VBW.datasource.module( ids, ck, cfg )` |
-    | texture | 批量获取纹理图像数据的方法 | `VBW.datasource.texture( ids, ck, cfg )` |
-    | game | 获取指定的游戏配置的方法 | `VBW.datasource.game( id, ck )` |
-    | subscribe | 订阅指定网络的区块高度变化的方法 | `VBW.datasource.subscribe( event,key,fun )` |
-    | off | 关闭对应链的数据订阅 | `VBW.datasource.off( event,key )` |
+    | init | Initialize the system |  `VBW.datasource.init( cfg )` |
+    | contract | On-chain contract requests are all concentrated here | `VBW.datasource.contract` |
+    | world | Get the setting of the corresponding world |  `VBW.datasource.world( index,ck,cfg )` |
+    | view | Method for obtaining block data | `VBW.datasource.view( x, y, ext, world, ck, limit)` |
+    | module | Method for obtaining model data in batches | `VBW.datasource.module( ids, ck, cfg )` |
+    | texture | Method for batch acquiring texture image data | `VBW.datasource.texture( ids, ck, cfg )` |
+    | game | Method for obtaining the specified game configuration | `VBW.datasource.game( id, ck )` |
+    | subscribe | Method for subscribing to block height changes of a specified network | `VBW.datasource.subscribe( event,key,fun )` |
+    | off | Close the data subscription of the corresponding chain | `VBW.datasource.off( event,key )` |
 
-* 合约部分使用外部注入的方式来处理，使用`VBW.datasource.contract.set(map)`来进行设置。调用时使用`VBW.datasource.contract.call( method,params )`来执行合约方法。这种依赖注入的方法，可以减少`Septopus引擎`的依赖，精简代码，也能应对链端发生的变化和新功能。
+* Contracts are handled through external injection, using `VBW.datasource.contract.set(map)` to set them. Contract methods are executed using `VBW.datasource.contract.call(method,params)`. This dependency injection approach reduces Septopus Engine dependencies, streamlines code, and adapts to changes and new features on the chain.

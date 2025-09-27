@@ -2,11 +2,11 @@
 
 * Code location: [/core/time.js](https://github.com/septopus-rex/world/blob/main/engine/src/septopus/core/time.js)
 
-* `Meta Septopus`使用区块高度来计算系统时间，是现实世界速度的约20倍，相当于现实时间的1年，在`Meta Septopus`里被计算为20年。
+* `Meta Septopus` uses block height to calculate system time, which is about 20 times the speed of the real world. The equivalent of one year in real time is calculated as 20 years in `Meta Septopus`.
 
-## 时间定义
+## Time Definition
 
-* `Meta Septopus`的时间定义如下：
+* `Meta Septopus` time definition as follow:
 
 ```Javascript
     {
@@ -21,8 +21,8 @@
     }
 ```
 
-## 有趣的特性
+## Interesting Features
 
-* `Meta Septopus`的时间设定上，就可以让世界里的物品有了时间属性，例如，当我们在`Block`上种一颗树的时候，可以根据这个时间来计算生长的情况。
+* The time setting of `Meta Septopus` can give objects in the world time attributes. For example, when we plant a tree on a `Block`, we can calculate the growth status based on this time.
   
-* `Meta Septopus`有了时间之后，也能建立`荒废机制`，即当一个`Block`没有更新超过**100年**的时候，即进入荒废状态，任何其他人就可以拥有这个`Block`，能对资源进行合理回收。
+* As `Meta Septopus` has time, it can also establish an `abandonment mechanism`. That is, when a `Block` has not been updated for more than **100 years**, it will enter an abandoned state. Anyone else can own this `Block` and recycle resources reasonably.
