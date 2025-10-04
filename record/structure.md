@@ -96,6 +96,15 @@
 
 * Group合约外部请求的方法列表，使用lottery方式创建的管理组
   
+|  合约方法   | 分类  | 功能描述  | 参数说明  | 签名人  |
+|  ----  | ----  | ---- | ---- | ---- |
+|  init  | 管理 | 初始化Group系统，建立必要的账号 | null | King |
+|  launch  | 管理 | 系统开始去中心化运行，无法再进行随意添加 |  | King |
+|  add  | 循环 | 添加1个Group |  | Anyone |
+|  rule  | 循环 | 设置Group的签署条件，设置后即不可修改 |  | Group Owner |
+|  member  | 循环 | 向Group添加1个memeber |  | Group Owner |
+|  approve  | 循环 | Memeber签名验证加入Group |  | Anyone |
+
 ### Treasure合约
 
 * Treasure数据组织涉及到的PDA账号
@@ -132,6 +141,7 @@
 |  apply  | 循环 | 申请成为审核AI |  | AI Owner |
 |  vertify  | 循环 | 验证部署好后的AI |  | Anyone |
 |  claim  | 循环 | 申请审核AI的费用 |  | AI Owner |
+|  judge  | 循环 | 对Project进行审议 | {project:0} | Anyone |
 
 ### Token合约
 
@@ -195,13 +205,17 @@
 
 |  合约方法   | 分类  | 功能描述  | 参数说明  | 签名人  |
 |  ----  | ----  | ---- | ---- | ---- |
-|  init  | 循环 | 初始化1个block |  | Anyone |
-|  abandon  | 循环 | 放弃block |  | Block Owner |
-|  occupy  | 循环 | 占有废弃的block |  | Block Owner |
+|  init  | 管理 | 初始化Block系统，建立必要的账号 | null | King |
+|  config  | 管理 | 配置Block运行的参数，例如各种条件的百分比 | JSON | King |
+|  update  | 管理 | 修改Block的配置 | JSON | King |
+|  launch  | 管理 | 系统开始去中心化运行，无法再进行随意添加 |  | King |
+|  own  | 管理 | 初始化占有1个block |  | Anyone |
+|  abandon  | 更新 | 放弃block |  | Block Owner |
+|  occupy  | 更新 | 占有废弃的block |  | Block Owner |
+|  update  | 更新 | 修改block的数据 |  | Block Owner |
 |  sell  | 交易 | 将block设置为销售状态 |  | Block Owner |
 |  buy  | 交易 | 购买一个销售的block |  | Anyone |
 |  revoke  | 交易 | 撤回block的销售状态 |  | Block Owner |
-|  update  | 更新 | 修改block的数据 |  | Block Owner |
 |  complain  | 管理 | 举报block的数据 |  | Anyone |
 |  ban  | 管理 | 禁止显示block的内容 |  | World Owner |
 |  restore  | 管理 | 申请恢复显示block的内容 |  | Block Owner |
@@ -222,6 +236,7 @@
 
 |  合约方法   | 分类  | 功能描述  | 参数说明  | 签名人  |
 |  ----  | ----  | ---- | ---- | ---- |
+
 |  add  | 使用 | 添加一个资源 |  | Anyone |
 |  complain  | 违规处理 | 举报一个资源 |  | Anyone |
 |  ban  | 违规处理 | 禁止指定的资源 |  | Committee Multisign |
@@ -242,10 +257,18 @@
 |  合约方法   | 分类  | 功能描述  | 参数说明  | 签名人  |
 |  ----  | ----  | ---- | ---- | ---- |
 |  add  | 使用 | 添加一个Adjunct | adjunct{} | Anyone |
+|  core  | 使用 | 添加一个Adjunct | adjunct{} | Anyone |
 
 ## 执行流程
 
 ### Rules Center
+
+* Rules的执行流程列表如下：
+  
+|  流程名称   | 实现功能  | 涉及调用方法  |
+|  ----  | ----  | ---- |
+|  系统初始化   | 启动Rulse的系统，并配置好，之后进入正常去中心化运行  | Rules.init(),Rules.config(),Rules.launch()  |
+|  增加rule条目   |  增加rule条目来讨论 | Rules.add(),Rules.comment() |
 
 ### King Center
 
