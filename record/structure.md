@@ -236,7 +236,10 @@
 
 |  合约方法   | 分类  | 功能描述  | 参数说明  | 签名人  |
 |  ----  | ----  | ---- | ---- | ---- |
-
+|  init  | 管理 | 初始化Resource系统，建立必要的账号 | null | King |
+|  config  | 管理 | 配置Resource运行的参数，例如各种条件的百分比 | JSON | King |
+|  update  | 管理 | 修改Resource的配置 | JSON | King |
+|  launch  | 管理 | 系统开始去中心化运行，无法再进行随意添加 |  | King |
 |  add  | 使用 | 添加一个资源 |  | Anyone |
 |  complain  | 违规处理 | 举报一个资源 |  | Anyone |
 |  ban  | 违规处理 | 禁止指定的资源 |  | Committee Multisign |
@@ -256,8 +259,14 @@
 
 |  合约方法   | 分类  | 功能描述  | 参数说明  | 签名人  |
 |  ----  | ----  | ---- | ---- | ---- |
+|  init  | 管理 | 初始化Adjunct系统，建立必要的账号 | null | King |
+|  config  | 管理 | 配置Adjunct运行的参数，例如各种条件的百分比 | JSON | King |
+|  update  | 管理 | 修改Adjunct的配置 | JSON | King |
+|  launch  | 管理 | 系统开始去中心化运行，无法再进行随意添加 |  | King |
 |  add  | 使用 | 添加一个Adjunct | adjunct{} | Anyone |
-|  core  | 使用 | 添加一个Adjunct | adjunct{} | Anyone |
+|  upgrade  | 使用 | 更新Adjunct的code | adjunct{} | Anyone |
+|  interpreter  | 管理 | 增加一个解释器，即非adjunct的部分| adjunct{} | Anyone |
+|  update  | 管理 | 更新解释器 | adjunct{} | Anyone |
 
 ## 执行流程
 
