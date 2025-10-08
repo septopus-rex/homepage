@@ -3,6 +3,8 @@
 ## 合约入口
 
 * 使用Solana的CPI结构来组织`Septopus`的所有合约，使用单一入口。
+* 使用Solana的`代理模式`来实现，主合约为`Entry`。
+* 子合约通过验证`Entry`合约传递过来的验证PDA账号，来确认请求来自`Entry`的请求。
 
 ## 合约结构
 
@@ -20,7 +22,7 @@
 |  Adjunct  |  Adjunct创建、Adjunct更新等 |  | Meta Septopus |
 |  Resoure  |  Resouce创建、Resouce更新、Resouce举报 |  | Meta Septopus |
 |  World  |  World的拍卖、World的配置、World的销售状态 |  | Meta Septopus |
-|  Block  |  数据保存、Block交易、Block举报、Block禁显、Block申请恢复、Block恢复 |  | Meta Septopus |
+|  Block  |  数据保存、Block交易、Block举报、Block禁显、Block申请恢复、Block恢复 |  | Meta Septopus, 拟使用cNFT来实现 |
   
 ### Rules
 
@@ -189,8 +191,13 @@
 |  adjunct_remove  | world管理 | 删除支持的adjunct |  | World owner |
 |  world_block_price  | world管理 | 销售率达到60%后，可以对block的初始化价格进行修改 |  | World owner |
 |  world_update  | world管理 | 对World的参数进行配置 |  | World owner |
+|  sell  | world循环 | 将world所有权做价销售 |  | World owner |
+|  revoke  | world循环 | 撤回world所有权销售状态 |  | World owner |
+|  buy  | world循环 | 购买world所有权 |  | Anyone |
 
 ### Block合约
+
+* Block采用cNFT作为发行方式，每个block就是一个cNFT。
 
 * Block数据组织涉及到的PDA账号
 
