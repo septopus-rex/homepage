@@ -23,6 +23,13 @@
 
 * `Septopus`的`Block`设置荒废机制，在两种情况下，`Block`进入荒废状态，其他玩家可以免费占有。一是所有者主动放弃，二是在`Septopus`世界里，超过100年没有更新。
 
+## 技术架构
+
+* `Septopus`采用Solana作为主要发布网络，和其展现的高性能低费用特性很是契合。
+* 合约采用[Solana CPI](https://solana.com/docs/core/cpi)的结构，保持对外的接口一致。
+* CPI的采用也支持King对所有审核的签署。无需King验证的子合约，也可以进行直接调用。
+* 作为`Septopus`系统的核心功能，对合约进行`生命周期管理`，实现去中心化的运行。
+  
 ## 资金募集
 
 * `Septopus`不限制资金募集的方式，目前主要有以下几种
@@ -32,5 +39,3 @@
 | 捐赠 | 接受数字资产的捐赠 | 放捐赠的链接 |
 | 发行Token | `Septopus`发行自己的token | ERC20, SPL Token |
 | Project的Token | `Septopus`投资的`Project`发行的Token | `Meta Septopus` |
-
-## 和AI的互动
