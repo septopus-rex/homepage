@@ -23,7 +23,7 @@
 |  Resoure  |  Resouce创建、Resouce更新、Resouce举报 |  | Meta Septopus |
 |  World  |  World的拍卖、World的配置、World的销售状态 |  | Meta Septopus |
 |  Block  |  数据保存、Block交易、Block举报、Block禁显、Block申请恢复、Block恢复 |  | Meta Septopus, 拟使用cNFT来实现 |
-  
+
 ### Rules
 
 * Rules数据组织涉及到的PDA账号
@@ -70,6 +70,7 @@
 |  review  | 循环 | King进行审核的操作，并附带结果 |  | King |
 |  abandon  | 循环 | King放弃自己位置的操作，会重新进入乐透选取 |  | Anyone |
 |  claim  | 循环 | King申请费用的操作 |  | King |
+|  impeach  | 循环 | 弹劾King的操作 |  | Anyone |
 
 ### Project合约
 
@@ -191,6 +192,8 @@
 |  adjunct_remove  | world管理 | 删除支持的adjunct |  | World owner |
 |  world_block_price  | world管理 | 销售率达到60%后，可以对block的初始化价格进行修改 |  | World owner |
 |  world_update  | world管理 | 对World的参数进行配置 |  | World owner |
+|  check_in  | world管理 | 打卡登记时间 |  | World owner |
+|  relieve  | world管理 | 申请移除World Owner |  | Anyone/King |
 |  sell  | world循环 | 将world所有权做价销售 |  | World owner |
 |  revoke  | world循环 | 撤回world所有权销售状态 |  | World owner |
 |  buy  | world循环 | 购买world所有权 |  | Anyone |

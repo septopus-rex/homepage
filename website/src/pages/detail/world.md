@@ -2,9 +2,8 @@
 
 ![world](../image/world.png)
 
-* Homepage: [https://world.septopus.xyz](https://world.septopus.xyz)
-* Demo: [https://world.septopus.xyz/demo](https://world.septopus.xyz/demo)
-* Document: [http://localhost:3000/docs/world/](http://localhost:3000/docs/world/)
+* Demo: [https://world.septopus.xyz](https://world.septopus.xyz)
+* Document: 
 * Funding:
 
 ## Overview
